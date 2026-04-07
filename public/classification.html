@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>分类体系 | 榕树世界 — Berg & Corner (2005) 六亚属权威分类</title>
+<link rel="icon" type="image/svg+xml" href="/img/logo.svg">
+<link rel="stylesheet" href="/css/common.css?v=1">
+</head>
+<body data-page="classification">
+
+<nav class="nav" aria-label="主导航">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><img src="/img/logo.svg" alt="榕树世界"></a>
+    <a href="/" class="nav-link">首页</a>
+    <a href="/classification.html" class="nav-link active">分类体系</a>
+    <a href="/lab.html" class="nav-link">鉴定实验室</a>
+    <a href="/morphology.html" class="nav-link">形态指南</a>
+    <a href="/gallery.html" class="nav-link">物种图鉴</a>
+    <a href="/distribution.html" class="nav-link">全球分布</a>
+    <div class="nav-more">
+      <button class="nav-more-btn" aria-label="更多导航"><span class="dot"><span></span><span></span><span></span></span></button>
+      <div class="nav-more-menu">
+        <a href="/gallery.html">🖼️ 物种图鉴</a>
+        <a href="/about.html">📖 关于项目</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="section" style="padding-top:80px;">
+  <div class="container">
+
+    <!-- 页面标题 -->
+    <div class="page-header">
+      <span class="page-badge">📊 Taxonomy</span>
+      <h1>Berg &amp; Corner (2005)<br>六亚属分类体系</h1>
+      <p class="page-desc">
+        本系统严格遵循 <strong>Berg CC &amp; Corner EJH (2005)</strong> 于
+        <em>Flora Malesiana</em> Ser.I 17(2) 发表的榕属权威分类框架。
+        该体系由荷兰国家植物标本馆（Leiden）与新加坡植物园联合建立，
+        将全球 ~800 种榕树划分为 <strong>6 个亚属（Subgenera）</strong>，
+        同时适用于化石记录和现生榕属分析。
+      </p>
+    </div>
+
+    <!-- 分类层级概览 -->
+    <div class="taxonomy-overview">
+      <h3 style="color:var(--primary);margin-bottom:16px;">🌳 分类层级结构</h3>
+      <div class="tax-chain">
+        <span class="tax-node tax-genus"><em>Ficus</em><br><small>属 Genus</small></span>
+        <span class="tax-arrow">→</span>
+        <span class="tax-node tax-subgenus">6 亚属<br><small>Subgenera</small></span>
+        <span class="tax-arrow">→</span>
+        <span class="tax-node tax-section">~20 组<br><small>Sections</small></span>
+        <span class="tax-arrow">→</span>
+        <span class="tax-node tax-species">800+ 种<br><small>Species</small></span>
+      </div>
+    </div>
+
+    <!-- 可展开的分类树 -->
+    <div class="taxonomy-tree-section">
+      <h3 style="color:var(--primary);margin-bottom:20px;">🔬 可展开分类树</h3>
+      <div class="tax-tree" id="taxTree">
+
+        <!-- 药榕亚属 Pharmacosycea -->
+        <details class="tax-details sg-pharmacosycea" open>
+          <summary class="tax-summary">
+            <span class="sg-dot" style="background:#E07B55"></span>
+            <strong>I. 药榕亚属 <em>Pharmacosycea</em> (Miq.) Miq.</strong>
+            <span class="sg-count">~90 种</span>
+            <span class="sg-tag" style="background:#E07B55;color:#fff;">新热带</span>
+          </summary>
+          <div class="tax-body">
+            <p class="tax-desc">大型乔木，腋生成对隐头果，基部粗壮侧脉。主要分布于中美洲和南美洲热带地区。</p>
+            <div class="tax-children">
+              <details class="tax-child">
+                <summary>Sect. <em>Pharmacosycea</em> — 药榕组</summary>
+                <ul class="species-list">
+                  <li><em>F. insipida</em> — 苦味榕（亚马逊流域优势种）</li>
+                  <li><em>F. maxima</em> — 大果榕（巴拿马至玻利维亚）</li>
+                  <li><em>F. tonduzii</em> — 通杜兹榕（哥斯达黎加/巴拿马）</li>
+                  <li><em>F. yoponensis</em> — 约波嫩榕（中美洲）</li>
+                </ul>
+              </details>
+              <details class="tax-child">
+                <summary>Sect. <em>Petrinae</em> — 岩榕组</summary>
+                <ul class="species-list">
+                  <li><em>F. americana</em> — 美洲榕（加勒比至南美北部）</li>
+                  <li><em>F. trigona</em> — 三棱榕（安第斯山区）</li>
+                  <li><em>F. obtusifolia</em> — 钝叶榕（墨西哥至哥斯达黎加）</li>
+                </ul>
+              </details>
+            </div>
+          </div>
+        </details>
+
+        <!-- 榕亚属 Urostigma -->
+        <details class="tax-details sg-urostigma" open>
+          <summary class="tax-summary">
+            <span class="sg-dot" style="background:#2D9D5C"></span>
+            <strong>II. 榕亚属 <em>Urostigma</em> (Gasp.) Miq.</strong>
+            <span class="sg-count">~300+ 种</span>
+            <span class="sg-tag" style="background:#2D9D5C;color:#fff;">泛热带</span>
+          </summary>
+          <div class="tax-body">
+            <p class="tax-desc">物种最丰富的亚属，生长型高度多样：乔木、灌木、绞杀、附生。具气生根/板根，隐头果排列方式多样。遍布全球热带地区。</p>
+            <div class="tax-children">
+              <details class="tax-child">
+                <summary>Sect. <em>Urostigma</em> — 榕组</summary>
+                <ul class="species-list">
+                  <li><em>F. benghalensis</em> — 孟加拉榕 / 菩提树（南亚/东南亚）</li>
+                  <li><em>F. religiosa</em> — 菩提树 / 智慧之树（印度/斯里兰卡）</li>
+                  <li><em>F. elastica</em> — 印度橡胶树（印度/缅甸原产）</li>
+                  <li><em>F. virens</em> — 黄葛树（中国南方/东南亚）</li>
+                  <li><em>F. altissima</em> — 高山榕（华南/东南亚）</li>
+                </ul>
+              </details>
+              <details class="tax-child">
+                <summary>Sect. <em>Conosycea</em> — 锥果榕组</summary>
+                <ul class="species-list">
+                  <li><em>F. microcarpa</em> — 小叶榕 / 细叶榕（东亚/东南亚广布）</li>
+                  <li><em>F. benjamina</em> — 垂叶榕 / 垂枝榕（东南亚/澳洲）</li>
+                  <li><em>F. concinna</em> — 美丽榕（中国南部）</li>
+                  <li><em>F. neriifolia</em> — 柳叶榕（喜马拉雅/云南）</li>
+                </ul>
+              </details>
+              <details class="tax-child">
+                <summary>Sect. <em>Malvanthera</em> — 马尔瓦榕组</summary>
+                <ul class="species-list">
+                  <li><em>F. macrophylla</em> — 大叶榕（澳大利亚东部）</li>
+                  <li><em>F. rubiginosa</em> — 红叶榕（澳大利亚）</li>
+                  <li><em>F. watkinsiana</em> — 沃特金斯榕（澳大利亚东海岸）</li>
+                </ul>
+              </details>
+              <details class="tax-child">
+                <summary>Sect. <em>Pilosycea</em> — 毛榕组</summary>
+                <ul class="species-list">
+                  <li><em>F. sarmentosa</em> — 爬藤榕（喜马拉雅至东亚）</li>
+                  <li><em>F. heteromorpha</em> — 异叶榕（中国西南）</li>
+                </ul>
+              </details>
+            </div>
+          </div>
+        </details>
+
+        <!-- 原始榕亚属 Ficus -->
+        <details class="tax-details sg-ficus" open>
+          <summary class="tax-summary">
+            <span class="sg-dot" style="background:#7CB342"></span>
+            <strong>III. 原始榕亚属 <em>Ficus</em> L.</strong>
+            <span class="sg-count">~100 种</span>
+            <span class="sg-tag" style="background:#7CB342;color:#fff;">非/亚/澳</span>
+          </summary>
+          <div class="tax-body">
+            <p class="tax-desc">灌木或小乔木为主，叶缘常具齿状，托叶宿存。分布于非洲、亚洲和澳大利亚的较干燥区域。</p>
+            <div class="tax-children">
+              <details class="tax-child">
+                <summary>Sect. <em>Ficus</em> — 原始榕组</summary>
+                <ul class="species-list">
+                  <li><em>F. carica</em> — 无花果（地中海原产，栽培广泛）</li>
+                  <li><em>F. palmata</em> — 掌叶榕（喜马拉雅/阿富汗）</li>
+                  <li><em>F. johannis</em> — 约翰榕（非洲东北部/阿拉伯半岛）</li>
+                  <li><em>F. pseudosycomorus</em> — 假聚果榕（东非）</li>
+                </ul>
+              </details>
+              <details class="tax-child">
+                <summary>Sect. <em>Sycidium</em> partim — 部分薜荔型</summary>
+                <ul class="species-list">
+                  <li><em>F. tikoua</em> — 地枇杷（中国西南）</li>
+                  <li><em>F. triloba</em> — 三裂榕（亚洲热带）</li>
+                </ul>
+              </details>
+            </div>
+          </div>
+        </details>
+
+        <!-- 薜荔亚属 Sycidium -->
+        <details class="tax-details sg-sycidium" open>
+          <summary class="tax-summary">
+            <span class="sg-dot" style="background:#26A69A"></span>
+            <strong>IV. 薜荔亚属 <em>Sycidium</em> (Miq.) Miq.</strong>
+            <span class="sg-count">~120 种</span>
+            <span class="sg-tag" style="background:#26A69A;color:#fff;">旧热带(亚洲/澳洲/太平洋)</span>
+          </summary>
+          <div class="tax-body">
+            <p class="tax-desc">藤本或攀援灌木为主，小型隐头果近无梗，合生托叶。是旧大陆热带地区最多样化的攀援性榕属类群。</p>
+            <div class="tax-children">
+              <details class="tax-child">
+                <summary>Sect. <em>Sycidium</em> — 薜荔组</summary>
+                <ul class="species-list">
+                  <li><em>F. pumila</em> — 薜荔 / 凉粉子（东亚广布）</li>
+                  <li><em>F. pumila</em> var. <em>awkeotsang</em> — 爱玉子（台湾特有变种）</li>
+                  <li><em>F. simplicissima</em> — 五指毛桃（中国南方）</li>
+                  <li><em>F. tinctoria</em> — 染料榕（太平洋岛屿）</li>
+                </ul>
+              </details>
+              <details class="tax-child">
+                <summary>Sect. <em>Palaeomorphe</em> — 古形榕组</summary>
+                <ul class="species-list">
+                  <li><em>F. villosa</em> — 密毛榕（马来群岛）</li>
+                  <li><em>F. scandens</em> — 攀援榕（东南亚）</li>
+                  <li><em>F. auriculata</em> — 大果榕（喜马拉雅/东南亚）</li>
+                </ul>
+              </details>
+              <details class="tax-child">
+                <summary>Sect. <em>Rhizocladus</em> — 根枝榕组</summary>
+                <ul class="species-list">
+                  <li><em>F. adenocaula</em> — 腺柄榕（菲律宾/婆罗洲）</li>
+                  <li><em>F. ribes</em> — 醋栗榕（东南亚）</li>
+                </ul>
+              </details>
+            </div>
+          </div>
+        </details>
+
+        <!-- 聚果榕亚属 Synoecia -->
+        <details class="tax-details sg-synoecia" open>
+          <summary class="tax-summary">
+            <span class="sg-dot" style="background:#9C27B0"></span>
+            <strong>V. 聚果榕亚属 <em>Synoecia</em> (Miq.) Miq.</strong>
+            <span class="sg-count">~80 种</span>
+            <span class="sg-tag" style="background:#9C27B0;color:#fff;">亚洲热带</span>
+          </summary>
+          <div class="tax-body">
+            <p class="tax-desc">中大型乔木，老茎上聚簇着生隐头果（茎花现象 cauliflory），是亚洲热带森林中极具辨识度的类群。</p>
+            <div class="tax-children">
+              <details class="tax-child">
+                <summary>Sect. <em>Synoecia</em> — 聚果榕组</summary>
+                <ul class="species-list">
+                  <li><em>F. racemosa</em> — 聚果榕 / 优昙钵花（南亚/东南亚）</li>
+                  <li><em>F. semicordata</em> — 半心叶榕（中国西南/泰国）</li>
+                  <li><em>F. variegata</em> > 斑叶榕（东南亚/新几内亚）</li>
+                  <li><em>F. hispida</em> — 硬毛榕（印度/东南亚）</li>
+                </ul>
+              </details>
+              <details class="tax-child">
+                <summary>Sect. <em>Neomorphe</em> — 新形榕组</summary>
+                <ul class="species-list">
+                  <li><em>F. drupacea</em> — 核果状榕（东南亚）</li>
+                  <li><em>F. fistulosa</em> — 管榕（东南亚）</li>
+                </ul>
+              </details>
+            </div>
+          </div>
+        </details>
+
+        <!-- 非洲榕亚属 Sycomorus -->
+        <details class="tax-details sg-sycomorus" open>
+          <summary class="tax-summary">
+            <span class="sg-dot" style="background:#E57373"></span>
+            <strong>VI. 非洲榕亚属 <em>Sycomorus</em> (Gasp.) Miq.</strong>
+            <span class="sg-count">~80+ 种</span>
+            <span class="sg-tag" style="background:#E57373;color:#fff;">非洲/印度洋岛屿</span>
+          </summary>
+          <div class="tax-body">
+            <p class="tax-desc">腋生串状排列的隐头果，表面常粗糙或具瘤突。以非洲大陆为核心分布区，部分种类延伸至马达加斯加和印度洋岛屿。</p>
+            <div class="tax-children">
+              <details class="tax-child">
+                <summary>Sect. <em>Sycomorus</em> — 非洲榕组</summary>
+                <ul class="species-list">
+                  <li><em>F. sycomorus</em> — 叙摩榕 / 埃及无花果（非洲/阿拉伯半岛）</li>
+                  <li><em>F. sur</em> — 苏尔榕（南非/东非）</li>
+                  <li><em>F. ingens</em> — 巨榕（东非/南非）</li>
+                  <li><em>F. lutea</em> — 黄榕（非洲南部）</li>
+                </ul>
+              </details>
+              <details class="tax-child">
+                <summary>Sect. <em>Sycocarpus</em> — 果榕组</summary>
+                <ul class="species-list">
+                  <li><em>F. abutilifolia</em> — 桑叶榕（西非）</li>
+                  <li><em>F. platypoda</em> — 托叶榕（西非）</li>
+                </ul>
+              </details>
+            </div>
+          </div>
+        </details>
+
+      </div>
+    </div>
+
+    <!-- 6亚属详情卡片 -->
+    <div class="subgenus-cards-grid">
+      <h3 style="color:var(--primary);margin-bottom:20px;text-align:center;width:100%;">📋 六亚属详情卡片</h3>
+
+      <!-- Pharmacosycea -->
+      <div class="subgenus-detail-card" style="--sg-color:#E07B55">
+        <div class="sgdc-header" style="background:linear-gradient(135deg,#E07B55,#c45a35)">
+          <span class="sgdc-num">I</span>
+          <h4><em>Pharmacosycea</em></h4>
+          <span class="sgdc-cn">药榕亚属</span>
+        </div>
+        <div class="sgdc-body">
+          <div class="sgdc-stat"><b>~90</b> 种</div>
+          <div class="sgdc-row"><label>分布</label><span>新热带区（中美洲→亚马逊）</span></div>
+          <div class="sgdc-row"><label>生长型</label><span>高大常绿乔木 (15-40m)</span></div>
+          <div class="sgdc-row"><label>关键特征</label><span>腋生成对隐头果；基部粗壮侧脉；乳汁丰富</span></div>
+          <div class="sgdc-row"><label>代表种</label><span><em>F. insipida</em>, <em>F. maxima</em>, <em>F. americana</em></span></div>
+          <div class="sgdc-row"><label>生态角色</label><span>亚马逊河岸林优势种；食果动物关键食物源</span></div>
+        </div>
+      </div>
+
+      <!-- Urostigma -->
+      <div class="subgenus-detail-card" style="--sg-color:#2D9D5C">
+        <div class="sgdc-header" style="background:linear-gradient(135deg,#2D9D5C,#1E7A43)">
+          <span class="sgdc-num">II</span>
+          <h4><em>Urostigma</em></h4>
+          <span class="sgdc-cn">榕亚属</span>
+        </div>
+        <div class="sgdc-body">
+          <div class="sgdc-stat"><b>~300+</b> 种</div>
+          <div class="sgdc-row"><label>分布</label><span>泛热带（最广布亚属）</span></div>
+          <div class="sgdc-row"><label>生长型</label><span>极多样：乔木/灌木/绞杀/附生/藤本</span></div>
+          <div class="sgdc-row"><label>关键特征</label><span>气生根发达；板根常见；隐头果排列多变</span></div>
+          <div class="sgdc-row"><label>代表种</label><span><em>F. benghalensis</em>, <em>F. religiosa</em>, <em>F. microcarpa</em>, <em>F. benjamina</em></span></div>
+          <div class="sgdc-row"><label>生态角色</label><span>景观树种；绞杀者；城市绿化主力</span></div>
+        </div>
+      </div>
+
+      <!-- Ficus -->
+      <div class="subgenus-detail-card" style="--sg-color:#7CB342">
+        <div class="sgdc-header" style="background:linear-gradient(135deg,#7CB342,#558B2F)">
+          <span class="sgdc-num">III</span>
+          <h4><em>Ficus</em></h4>
+          <span class="sgdc-cn">原始榕亚属</span>
+        </div>
+        <div class="sgdc-body">
+          <div class="sgdc-stat"><b>~100</b> 种</div>
+          <div class="sgdc-row"><label>分布</label><span>非洲 + 亚洲干旱区 + 澳大利亚</span></div>
+          <div class="sgdc-row"><label>生长型</label><span>灌木/小乔木为主</span></div>
+          <div class="sgdc-row"><label>关键特征</label><span>叶缘常齿状；托叶宿存；隐头果单生腋生</span></div>
+          <div class="sgdc-row"><label>代表种</label><span><em>F. carica</em>(无花果), <em>F. palmata</em>, <em>F. johannis</em></span></div>
+          <div class="sgdc-row"><label>生态角色</label><span>地中海文化象征；水果作物</span></div>
+        </div>
+      </div>
+
+      <!-- Sycidium -->
+      <div class="subgenus-detail-card" style="--sg-color:#26A69A">
+        <div class="sgdc-header" style="background:linear-gradient(135deg,#26A69A,#00897B)">
+          <span class="sgdc-num">IV</span>
+          <h4><em>Sycidium</em></h4>
+          <span class="sgdc-cn">薜荔亚属</span>
+        </div>
+        <div class="sgdc-body">
+          <div class="sgdc-stat"><b>~120</b> 种</div>
+          <div class="sgdc-row"><label>分布</label><span>旧热带：亚洲/澳洲/太平洋岛屿</span></div>
+          <div class="sgdc-row"><label>生长型</label><span>藤本/攀援灌木为主</span></div>
+          <div class="sgdc-row"><label>关键特征</label><span>小型隐头果近无梗；合生托叶；常贴地生长</span></div>
+          <div class="sgdc-row"><label>代表种</label><span><em>F. pumila</em>(薜荔), <em>F. simplicissima</em>(五指毛桃), <em>F. tinctoria</em></span></div>
+          <div class="sgdc-row"><label>生态角色</label><span>岩壁/墙面覆盖；传统药材（凉粉/爱玉冻）</span></div>
+        </div>
+      </div>
+
+      <!-- Synoecia -->
+      <div class="subgenus-detail-card" style="--sg-color:#9C27B0">
+        <div class="sgdc-header" style="background:linear-gradient(135deg,#9C27B0,#7B1FA2)">
+          <span class="sgdc-num">V</span>
+          <h4><em>Synoecia</em></h4>
+          <span class="sgdc-cn">聚果榕亚属</span>
+        </div>
+        <div class="sgdc-body">
+          <div class="sgdc-stat"><b>~80</b> 种</div>
+          <div class="sgdc-row"><label>分布</label><span>亚洲热带（南亚→东南亚→新几内亚）</span></div>
+          <div class="sgdc-row"><label>生长型</label><span>中大型乔木 (10-30m)</span></div>
+          <div class="sgdc-row"><label>关键特征</label><span>老茎生果(cauliflory)；聚簇排列；果实密集</span></div>
+          <div class="sgdc-row"><label>代表种</label><span><em>F. racemosa</em>(聚果榕), <em>F. variegata</em>, <em>F. hispida</em></span></div>
+          <div class="sgdc-row"><label>生态角色</label><span>佛教圣树之一；野生动物重要食物源</span></div>
+        </div>
+      </div>
+
+      <!-- Sycomorus -->
+      <div class="subgenus-detail-card" style="--sg-color:#E57373">
+        <div class="sgdc-header" style="background:linear-gradient(135deg,#E57373,#E53935)">
+          <span class="sgdc-num">VI</span>
+          <h4><em>Sycomorus</em></h4>
+          <span class="sgdc-cn">非洲榕亚属</span>
+        </div>
+        <div class="sgdc-body">
+          <div class="sgdc-stat"><b>~80+</b> 种</div>
+          <div class="sgdc-row"><label>分布</label><span>非洲大陆 + 马达加斯加 + 印度洋岛屿</span></div>
+          <div class="sgdc-row"><label>生长型</label><span>大型乔木 (10-25m)</span></div>
+          <div class="sgdc-row"><label>关键特征</label><span>腋生串状隐头果；表面粗糙/瘤突；乳汁稀少</span></div>
+          <div class="sgdc-row"><label>代表种</label><span><em>F. sycomorus</em>, <em>F. sur</em>, <em>F. ingens</em>, <em>F. lutea</em></span></div>
+          <div class="sgdc-row"><label>生态角色</label><span>非洲稀树草原关键种；尼罗河谷历史树种</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 对比表 -->
+    <div class="comparison-table-wrap">
+      <h3 style="color:var(--primary);margin-bottom:16px;">⚖️ 六亚属快速对比表</h3>
+      <div class="table-scroll">
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th>亚属</th>
+              <th>拉丁名</th>
+              <th>物种数</th>
+              <th>核心分布</th>
+              <th>典型生长型</th>
+              <th>隐头果特征</th>
+              <th>诊断要点</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row-pharma">
+              <td><span class="mini-dot" style="background:#E07B55"></span>药榕亚属</td>
+              <td><em>Pharmacosycea</em></td>
+              <td>~90</td>
+              <td>新热带</td>
+              <td>高大乔木</td>
+              <td>腋生成对</td>
+              <td>基部粗壮侧脉</td>
+            </tr>
+            <tr class="row-uro">
+              <td><span class="mini-dot" style="background:#2D9D5C"></span>榕亚属</td>
+              <td><em>Urostigma</em></td>
+              <td>~300+</td>
+              <td>泛热带</td>
+              <td>极多样</td>
+              <td>排列多变</td>
+              <td>气生根/板根</td>
+            </tr>
+            <tr class="row-ficus">
+              <td><span class="mini-dot" style="background:#7CB342"></span>原始榕亚属</td>
+              <td><em>Ficus</em></td>
+              <td>~100</td>
+              <td>非/亚/澳</td>
+              <td>灌/小乔</td>
+              <td>单生腋生</td>
+              <td>叶缘齿状+托叶宿存</td>
+            </tr>
+            <tr class="row-syci">
+              <td><span class="mini-dot" style="background:#26A69A"></span>薜荔亚属</td>
+              <td><em>Sycidium</em></td>
+              <td>~120</td>
+              <td>旧热带</td>
+              <td>藤本/攀援</td>
+              <td>近无梗小型</td>
+              <td>合生托叶</td>
+            </tr>
+            <tr class="row-syno">
+              <td><span class="mini-dot" style="background:#9C27B0"></span>聚果榕亚属</td>
+              <td><em>Synoecia</em></td>
+              <td>~80</td>
+              <td>亚洲热带</td>
+              <td>中大乔木</td>
+              <td>老茎聚簇</td>
+              <td>茎花现象</td>
+            </tr>
+            <tr class="row-syco">
+              <td><span class="mini-dot" style="background:#E57373"></span>非洲榕亚属</td>
+              <td><em>Sycomorus</em></td>
+              <td>~80+</td>
+              <td>非洲/印太</td>
+              <td>大型乔木</td>
+              <td>腋生串状</td>
+              <td>表面粗糙</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 文献引用 -->
+    <div class="methodology-bg" style="border-radius:12px;padding:24px;margin-top:32px;">
+      <h4 style="color:var(--accent-gold);margin-bottom:12px;">📚 核心参考文献</h4>
+      <ol style="padding-left:18px;margin:4px 0;font-size:0.85em;line-height:2;color:var(--text-secondary)">
+        <li>Berg CC &amp; Corner EJH (2005) <em>Ficus (Moraceae)</em>. Flora Malesiana Ser.I 17(2): 1–730.</li>
+        <li>Weiblen GD (2020) <em>The Fig Tree Flora of New Guinea</em>. National Herbarium of the Netherlands.</li>
+        <li>Cruaud A et al. (2012) An exceptional 750-million-year coevolutionary relationship between figs and their pollinating wasps. <em>Proc R Soc B</em> 279:1488–1496.</li>
+        <li>POWO — Plants of the World Online, Royal Botanic Gardens Kew. https://powo.science.kew.org/</li>
+        <li>FigWeb — Online resource for fig and fig wasp research. http://www.figweb.org/</li>
+      </ol>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <p><a href="/">← 返回首页</a></p>
+  <p style="margin-top:12px;">Made with 🌿 · <span id="year"></span></p>
+</footer>
+
+<script src="/js/common.js?v=1"></script>
+<script>sharedInit();</script>
+<style>
+/* ====== 分类体系页专用样式 ====== */
+
+.page-header {
+  text-align:center;
+  margin-bottom:36px;
+}
+.page-badge {
+  display:inline-block;
+  background:var(--primary);
+  color:#fff;
+  padding:4px 14px;
+  border-radius:20px;
+  font-size:0.82em;
+  font-weight:600;
+  margin-bottom:12px;
+}
+.page-header h1 {
+  font-size:clamp(1.6rem,4vw,2.4rem);
+  line-height:1.3;
+  margin-bottom:14px;
+  background:linear-gradient(135deg,var(--primary),var(--accent-green));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.page-desc {
+  max-width:720px;
+  margin:0 auto;
+  color:var(--text-secondary);
+  font-size:0.95em;
+  line-height:1.8;
+}
+
+/* 层级链 */
+.taxonomy-overview {
+  background:rgba(45,157,92,0.06);
+  border:1px solid rgba(45,157,92,0.18);
+  border-radius:12px;
+  padding:24px;
+  margin-bottom:32px;
+}
+.tax-chain {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+  padding:12px 0;
+}
+.tax-node {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:12px 18px;
+  border-radius:10px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  min-width:100px;
+  text-align:center;
+  transition:transform 0.2s;
+}
+.tax-node:hover { transform:translateY(-2px); }
+.tax-node em { font-style:italic; font-weight:700; font-size:1.05em; }
+.tax-node small { opacity:0.65; font-size:0.78em; }
+.tax-tax-genus { border-color:var(--accent-gold)!important; }
+.tax-arrow {
+  color:var(--primary);
+  font-weight:700;
+  font-size:1.2em;
+  opacity:0.6;
+}
+
+/* 分类树 */
+.taxonomy-tree-section {
+  margin-bottom:36px;
+}
+.tax-tree {
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.tax-details {
+  border-radius:10px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.08);
+  background:rgba(255,255,255,0.02);
+  transition:border-color 0.2s;
+}
+.tax-details:hover { border-color:rgba(255,255,255,0.15); }
+.tax-details[open] { border-color:rgba(255,255,255,0.12); }
+
+.tax-summary {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 18px;
+  cursor:pointer;
+  user-select:none;
+  font-size:0.95em;
+  transition:background 0.2s;
+}
+.tax-summary:hover { background:rgba(255,255,255,0.03); }
+.sg-dot {
+  width:12px;height:12px;border-radius:50%;
+  flex-shrink:0;
+}
+.tax-summary strong { flex:1; }
+.tax-summary em { font-style:italic; }
+.sg-count {
+  background:rgba(255,255,255,0.08);
+  padding:2px 10px;
+  border-radius:12px;
+  font-size:0.82em;
+  color:var(--text-secondary);
+}
+.sg-tag {
+  padding:2px 10px;
+  border-radius:12px;
+  font-size:0.78em;
+  font-weight:600;
+}
+
+.tax-body {
+  padding:0 18px 14px;
+}
+.tax-desc {
+  font-size:0.88em;
+  color:var(--text-secondary);
+  margin-bottom:10px;
+  line-height:1.6;
+}
+.tax-children {
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  padding-left:8px;
+  border-left:2px solid rgba(255,255,255,0.06);
+  margin-left:6px;
+}
+.tax-child {
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.05);
+  overflow:hidden;
+}
+.tax-child summary {
+  padding:8px 14px;
+  cursor:pointer;
+  font-size:0.86em;
+  color:var(--text);
+  background:rgba(255,255,255,0.02);
+  transition:background 0.2s;
+}
+.tax-child summary:hover { background:rgba(255,255,255,0.05); }
+.species-list {
+  list-style:none;
+  padding:6px 14px 10px;
+  margin:0;
+  font-size:0.84em;
+}
+.species-list li {
+  padding:3px 0;
+  color:var(--text-secondary);
+  border-bottom:1px dashed rgba(255,255,255,0.04);
+}
+.species-list li:last-child { border-bottom:none; }
+.species-list em { font-style:italic; color:var(--text); font-weight:500; }
+
+/* 亚属详情卡片网格 */
+.subgenus-cards-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:18px;
+  margin-bottom:36px;
+}
+.subgenus-detail-card {
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.08);
+  background:rgba(255,255,255,0.03);
+  transition:transform 0.25s, box-shadow 0.25s;
+}
+.subgenus-detail-card:hover {
+  transform:translateY(-4px);
+  box-shadow:0 8px 28px rgba(0,0,0,0.3);
+}
+.sgdc-header {
+  padding:18px 20px;
+  color:#fff;
+  position:relative;
+}
+.sgdc-num {
+  position:absolute;
+  top:12px;right:16px;
+  font-size:1.8em;
+  font-weight:900;
+  opacity:0.25;
+}
+.sgdc-header h4 {
+  margin:0 0 4px;
+  font-size:1.15em;
+}
+.sgdc-header h4 em { font-style:italic; }
+.sgdc-cn {
+  font-size:0.85em;
+  opacity:0.85;
+}
+.sgdc-body {
+  padding:16px 20px;
+}
+.sgdc-stat {
+  font-size:1.4em;
+  font-weight:800;
+  color:var(--sg-color,var(--primary));
+  margin-bottom:12px;
+}
+.sgdc-row {
+  display:flex;
+  gap:8px;
+  padding:6px 0;
+  font-size:0.84em;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  line-height:1.5;
+}
+.sgdc-row:last-child { border-bottom:none; }
+.sgdc-row label {
+  color:var(--text-muted);
+  white-space:nowrap;
+  min-width:64px;
+  font-weight:600;
+}
+.sgdc-row span { color:var(--text-secondary); }
+.sgdc-row span em { font-style:italic; color:var(--text); }
+
+/* 对比表 */
+.comparison-table-wrap {
+  margin-bottom:24px;
+}
+.table-scroll {
+  overflow-x:auto;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.08);
+}
+.comp-table {
+  width:100%;
+  border-collapse:collapse;
+  font-size:0.84em;
+  min-width:720px;
+}
+.comp-table th {
+  background:rgba(45,157,92,0.12);
+  color:var(--primary);
+  padding:12px 10px;
+  text-align:left;
+  font-weight:700;
+  white-space:nowrap;
+  border-bottom:2px solid rgba(45,157,92,0.25);
+}
+.comp-table td {
+  padding:10px 10px;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  color:var(--text-secondary);
+  vertical-align:top;
+}
+.comp-table tbody tr:hover {
+  background:rgba(255,255,255,0.03);
+}
+.mini-dot {
+  display:inline-block;
+  width:10px;height:10px;border-radius:50%;
+  vertical-align:middle;
+  margin-right:4px;
+}
+
+@media(max-width:640px){
+  .subgenus-cards-grid { grid-template-columns:1fr; }
+  .tax-chain { flex-direction:column; gap:6px; }
+  .tax-arrow { transform:rotate(90deg); }
+  .comp-table { font-size:0.76em; }
+  .sgdc-row { flex-direction:column; gap:2px; }
+}
+</style>
+</body>
+</html>

@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>形态学指南 | 榕树世界 — 六大鉴定器官可视化图鉴</title>
+<link rel="icon" type="image/svg+xml" href="/img/logo.svg">
+<link rel="stylesheet" href="/css/common.css?v=1">
+</head>
+<body data-page="morphology">
+
+<nav class="nav" aria-label="主导航">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><img src="/img/logo.svg" alt="榕树世界"></a>
+    <a href="/" class="nav-link">首页</a>
+    <a href="/classification.html" class="nav-link">分类体系</a>
+    <a href="/lab.html" class="nav-link">鉴定实验室</a>
+    <a href="/morphology.html" class="nav-link active">形态指南</a>
+    <a href="/gallery.html" class="nav-link">物种图鉴</a>
+    <a href="/distribution.html" class="nav-link">全球分布</a>
+    <div class="nav-more">
+      <button class="nav-more-btn" aria-label="更多导航"><span class="dot"><span></span><span></span><span></span></span></button>
+      <div class="nav-more-menu">
+        <a href="/gallery.html">🖼️ 物种图鉴</a>
+        <a href="/about.html">📖 关于项目</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="section" style="padding-top:80px;">
+  <div class="container">
+
+    <!-- 页面标题 -->
+    <div class="page-header">
+      <span class="page-badge">🔬 Morphology</span>
+      <h1>形态学鉴定指南</h1>
+      <p class="page-desc">
+        榕属物种的鉴定依赖对<strong>六大器官形态特征</strong>的系统观察。
+        本页面以可视化的方式呈现每个器官的<strong>诊断维度</strong>，
+        帮助理解 AI 鉴定系统如何从图像中提取和比对形态特征。
+      </p>
+    </div>
+
+    <!-- 六大器官导航标签 -->
+    <div class="organ-tabs">
+      <button class="org-tab active" data-organ="syconium" onclick="switchOrgan('syconium')">
+        <span class="org-icon">🫒</span>隐头果
+      </button>
+      <button class="org-tab" data-organ="leaf" onclick="switchOrgan('leaf')">
+        <span class="org-icon">🍃</span>叶片
+      </button>
+      <button class="org-tab" data-organ="venation" onclick="switchOrgan('venation')">
+        <span class="org-icon">🔀</span>叶脉
+      </button>
+      <button class="org-tab" data-organ="stipule" onclick="switchOrgan('stipule')">
+        <span class="org-icon">📐</span>托叶
+      </button>
+      <button class="org-tab" data-organ="bark" onclick="switchOrgan('bark')">
+        <span class="org-icon">🪵</span>树皮
+      </button>
+      <button class="org-tab" data-organ="habit" onclick="switchOrgan('habit')">
+        <span class="org-icon">🌳</span>生长习性
+      </button>
+    </div>
+
+    <!-- ====== 器官1: 隐头果 Syconium ====== -->
+    <div class="organ-panel active" id="panel-syconium">
+      <div class="organ-intro">
+        <h3 style="color:var(--accent-red);">🫒 隐头果（Syconium）— 榕属最核心的鉴定器官</h3>
+        <p>隐头果是榕属特有的<strong>封闭式聚花果</strong>，由内陷的花序轴包裹数百至数千朵小花构成。其形态变异是亚属级乃至种级分类的首要依据。</p>
+      </div>
+
+      <div class="morph-grid">
+
+        <!-- 形状 -->
+        <div class="morph-card">
+          <h4 class="mc-title mc-red">形状 Shape</h4>
+          <div class="morph-shapes">
+            <div class="shape-item">
+              <svg viewBox="0 0 60 70" width="50" height="58"><ellipse cx="30" cy="35" rx="22" ry="28" fill="#C75D4A" opacity="0.7"/><circle cx="30" cy="20" r="3" fill="#fff" opacity="0.6"/></svg>
+              <span>球形<br><small>Spherical</small></span>
+            </div>
+            <div class="shape-item">
+              <svg viewBox="0 0 60 70" width="50" height="58"><ellipse cx="30" cy="38" rx="18" ry="24" fill="#C75D4A" opacity="0.7"/><path d="M12 14 Q30 2 48 14" stroke="#C75D4A" stroke-width="5" fill="none" opacity="0.7"/><circle cx="30" cy="16" r="3" fill="#fff" opacity="0.6"/></svg>
+              <span>梨形<br><small>Pyriform</small></span>
+            </div>
+            <div class="shape-item">
+              <svg viewBox="0 0 60 70" width="50" height="58"><rect x="10" y="10" width="40" height="50" rx="8" fill="#C75D4A" opacity="0.7"/><circle cx="30" cy="15" r="3" fill="#fff" opacity="0.6"/></svg>
+              <span>圆柱形<br><small>Cylindrical</small></span>
+            </div>
+            <div class="shape-item">
+              <svg viewBox="0 0 60 70" width="50" height="58"><ellipse cx="30" cy="40" rx="20" ry="22" fill="#C75D4A" opacity="0.7"/><ellipse cx="30" cy="18" rx="10" ry="12" fill="#C75D4A" opacity="0.7"/><circle cx="30" cy="10" r="3" fill="#fff" opacity="0.6"/></svg>
+              <span>双球状<br><small>Globose-duplex</small></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 大小 -->
+        <div class="morph-card">
+          <h4 class="mc-title mc-red">大小 Size</h4>
+          <ul class="mc-list">
+            <li><b>微型：</b>直径 &lt;5mm — 如 <em>F. pumila</em> 薜荔的隐头果</li>
+            <li><b>小型：</b>5–15mm — 最常见尺寸范围</li>
+            <li><b>中型：</b>15–30mm — 如 <em>F. microcarpa</em> 小叶榕</li>
+            <li><b>大型：</b>&gt;30mm — 如 <em>F. auriculata</em> 大果榕可达 40–60mm</li>
+          </ul>
+        </div>
+
+        <!-- 颜色与成熟变化 -->
+        <div class="morph-card">
+          <h4 class="mc-title mc-red">颜色 Color &amp; 成熟变化</h4>
+          <div class="color-row">
+            <span class="clr-chip" style="background:#4a7c3f;color:#fff;">绿色(未熟)</span>
+            <span class="clr-chip" style="background:#c4922e;color:#fff;">黄色/黄绿(转色)</span>
+            <span class="clr-chip" style="background:#c75d4a;color:#fff;">红色/橙红(成熟)</span>
+            <span class="clr-chip" style="background:#5c3d6e;color:#fff;">紫黑/深紫(完熟)</span>
+          </div>
+          <p class="mc-note">不同亚属成熟颜色差异显著：<em>Sycomorus</em> 多为黄→红；<em>Urostigma</em> 多为绿→紫黑；<em>Pharmacosycea</em> 常为绿→黄。</p>
+        </div>
+
+        <!-- 孔口 Ostiole -->
+        <div class="morph-card full-width">
+          <h4 class="mc-title mc-red">孔口（Ostiole）位置与结构</h4>
+          <div class="ostiole-diagram">
+            <div class="ostiole-item">
+              <div class="ostiole-svg-wrap">
+                <svg viewBox="0 0 80 100" width="80" height="100">
+                  <ellipse cx="40" cy="55" rx="30" ry="38" fill="#4a7c3f" opacity="0.5"/>
+                  <circle cx="40" cy="22" r="5" fill="#c4922e" stroke="#fff" stroke-width="1"/>
+                  <text x="40" y="90" text-anchor="middle" font-size="9" fill="var(--text-secondary)">顶端孔口</text>
+                </svg>
+              </div>
+              <p><b>顶生 Apical</b><br>最常见类型，孔口位于隐头果顶端中央。<br>典型：大多数 <em>Urostigma</em> 种类</p>
+            </div>
+            <div class="ostiole-item">
+              <div class="ostiole-svg-wrap">
+                <svg viewBox="0 0 80 100" width="80" height="100">
+                  <ellipse cx="40" cy="55" rx="30" ry="35" fill="#4a7c3f" opacity="0.5"/>
+                  <circle cx="40" cy="26" r="4" fill="#c4922e" stroke="#fff" stroke-width="1"/>
+                  <text x="40" y="92" text-anchor="middle" font-size="9" fill="var(--text-secondary)">侧生偏顶</text>
+                </svg>
+              </div>
+              <p><b>侧生 Lateral</b><br>孔口略偏离顶端中心。<br>典型：<em>Sycidium</em> 部分、<em>Synoecia</em></p>
+            </div>
+            <div class="ostiole-item">
+              <div class="ostiole-svg-wrap">
+                <svg viewBox="0 0 80 100" width="80" height="100">
+                  <ellipse cx="40" cy="55" rx="25" ry="32" fill="#4a7c3f" opacity="0.5"/>
+                  <ellipse cx="40" cy="27" rx="8" ry="5" fill="#c4922e" stroke="#fff" stroke-width="1"/>
+                  <text x="40" y="92" text-anchor="middle" font-size="9" fill="var(--text-secondary)">盾状苞片覆盖</text>
+                </svg>
+              </div>
+              <p><b>被覆 Covered</b><br>孔口被盾状或鳞片状苞片遮盖。<br>典型：<em>Sycomorus</em> 亚属特征之一</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 排列方式 -->
+        <div class="morph-card">
+          <4 class="mc-title mc-red">排列方式 Arrangement</h4>
+          <div class="arrange-grid">
+            <div class="arrange-item">
+              <b>腋生 solitary</b>
+              <p>单生于叶腋，最常见的排列方式</p>
+              <span class="arr-tag">Ficus, Urostigma, Sycidium</span>
+            </div>
+            <div class="arrange-item">
+              <b>成对 paired</b>
+              <p>叶腋处成对着生</p>
+              <span class="arr-tag">Pharmacosycea 特征</span>
+            </div>
+            <div class="arrange-item">
+              <b>簇生 clustered</b>
+              <p>多枚聚集于短枝或茎干上</p>
+              <span class="arr-tag">Synoecia 茎花现象</span>
+            </div>
+            <div class="arrange-item">
+              <b>串状 racemose</b>
+              <p>沿枝条或老茎串状排列</p>
+              <span class="arr-tag">Sycomorus 特征</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 表面纹理 -->
+        <div class="morph-card">
+          <h4 class="mc-title mc-red">表面纹理 Surface Texture</h4>
+          <div class="texture-tags">
+            <span class="tex-tag">光滑 Smooth</span>
+            <span class="tex-tag">具瘤 Tuberculate</span>
+            <span class="tex-tag">具毛 Pubescent</span>
+            <span class="tex-tag">具白粉 Glaucous</span>
+            <span class="tex-tag">具斑点 Speckled</span>
+            <span class="tex-tag">粗糙 Rugose</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ====== 器官2: 叶片 Leaf ====== -->
+    <div class="organ-panel" id="panel-leaf">
+      <div class="organ-intro">
+        <h3 style="color:var(--primary);">🍃 叶片（Leaf）— 最易获取的鉴定材料</h3>
+        <p>叶片是野外鉴定中最常观察到的器官，但其变异性也最大。需综合<strong>叶形、叶基、叶尖、叶缘、质地、大小</strong>等多维度信息进行判断。</p>
+      </div>
+
+      <div class="morph-grid">
+
+        <!-- 叶形图谱 -->
+        <div class="morph-card full-width">
+          <h4 class="mc-title mc-green">叶形图谱 Leaf Shape Gallery</h4>
+          <div class="leaf-shape-gallery">
+            <div class="lsg-item">
+              <svg viewBox="0 0 80 110" class="lsg-svg"><path d="M40 5 Q65 25 62 55 Q58 85 40 105 Q22 85 18 55 Q15 25 40 5Z" fill="#2D9D5C" opacity="0.6"/></svg>
+              <span>卵形 Ovate</span>
+              <small><em>F. benjamina</em>, <em>F. microcarpa</em></small>
+            </div>
+            <div class="lsg-item">
+              <svg viewBox="0 0 80 110" class="lsg-svg"><path d="M40 5 Q68 20 66 55 Q63 95 40 105 Q17 95 14 55 Q12 20 40 5Z" fill="#2D9D5C" opacity="0.6"/></svg>
+              <span>椭圆形 Elliptic</span>
+              <small><em>F. elastica</em>, <em>F. altissima</em></small>
+            </div>
+            <div class="lsg-item">
+              <svg viewBox="0 0 80 130" class="lsg-svg"><path d="M40 5 Q56 20 54 55 Q52 95 40 125 Q28 95 26 55 Q24 20 40 5Z" fill="#2D9D5C" opacity="0.6"/></svg>
+              <span>披针形 Lanceolate</span>
+              <small><em>F. neriifolia</em>, <em>F. virens</em></small>
+            </div>
+            <div class="lsg-item">
+              <svg viewBox="0 0 80 110" class="lsg-svg"><path d="M40 5 Q72 30 68 60 Q60 88 40 105 Q20 88 12 60 Q8 30 40 5Z" fill="#2D9D5C" opacity="0.6"/></svg>
+              <span>倒卵形 Obovate</span>
+              <small><em>F. religiosa</em>(长尾状)</small>
+            </div>
+            <div class="lsg-item">
+              <svg viewBox="0 0 100 110" class="lsg-svg"><path d="M50 5 Q82 25 78 55 Q74 85 50 105 Q26 85 22 55 Q18 25 50 5Z M50 5 Q50 45 50 105" stroke="#2D9D5C" stroke-width="1.5" fill="none" opacity="0.6"/><path d="M50 5 Q82 25 78 55 Q74 85 50 105 Q26 85 22 55 Q18 25 50 5Z" fill="#2D9D5C" opacity="0.3"/></svg>
+              <span>掌状 Palmate</span>
+              <small><em>F. palmata</em>, <em>F. carica</em></small>
+            </div>
+            <div class="lsg-item">
+              <svg viewBox="0 0 80 120" class="lsg-svg"><path d="M40 5 Q58 18 56 40 Q54 65 40 115 Q26 65 24 40 Q22 18 40 5Z" fill="#2D9D5C" opacity="0.6"/></svg>
+              <span>匙形 Spoon-shaped</span>
+              <small><em>F. tikoua</em></small>
+            </div>
+            <div class="lsg-item">
+              <svg viewBox="0 0 80 110" class="lsg-svg"><path d="M40 5 Q64 22 62 50 Q59 80 40 105 Q21 80 18 50 Q16 22 40 5Z" fill="#2D9D5C" opacity="0.6"/><path d="M18 50 Q29 52 40 50 Q51 52 62 50" stroke="#1E7A43" stroke-width="1" fill="none"/></svg>
+              <span>琴形 Pandurate</span>
+              <small><em>F. auriculata</em></small>
+            </div>
+            <div class="lsg-item">
+              <svg viewBox="0 0 80 110" class="lsg-svg"><path d="M40 5 Q62 23 60 53 Q57 83 40 105 Q23 83 20 53 Q18 23 40 5Z" fill="#2D9D5C" opacity="0.6"/><path d="M20 53 L18 58 M22 60 L20 65 M25 67 L23 72 M30 73 L28 78 M35 76 L33 81 M40 77 L38 82 M45 76 L47 81 M50 73 L52 78 M55 67 L57 72 M60 60 L62 65 M62 53 L64 58" stroke="#1E7A43" stroke-width="1.2" fill="none"/></svg>
+              <span>锯齿缘 Serrate</span>
+              <small><em>Ficus</em> 亚属特征</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- 叶基 -->
+        <div class="morph-card">
+          <h4 class="mc-title mc-green">叶基 Leaf Base</h4>
+          <div class="base-shapes">
+            <div class="bs-item"><svg viewBox="0 0 60 50" width="60" height="50"><path d="M5 25 Q30 5 55 25 Q30 42 5 25Z" fill="#2D9D5C" opacity="0.5"/></svg><span>楔形 Cuneate</span></div>
+            <div class="bs-item"><svg viewBox="0 0 60 50" width="60" height="50"><path d="M5 25 Q30 8 55 25 Q30 42 5 25Z" fill="#2D9D5C" opacity="0.5"/><circle cx="30" cy="25" r="6" fill="none" stroke="#2D9D5C" stroke-width="1" stroke-dasharray="2 2"/></svg><span>圆形 Rounded</span></div>
+            <div class="bs-item"><svg viewBox="0 0 60 50" width="60" height="50"><path d="M5 25 Q30 2 55 25 Q30 42 5 25Z" fill="#2D9D5C" opacity="0.5"/></svg><span>心形 Cordate</span></div>
+            <div class="bs-item"><svg viewBox="0 0 60 50" width="60" height="50"><path d="M5 25 Q30 15 55 25 Q30 42 5 25Z" fill="#2D9D5C" opacity="0.5"/></svg><span>截形 Truncate</span></div>
+            <div class="bs-item"><svg viewBox="0 0 60 50" width="60" height="50"><path d="M5 25 Q30 0 55 25 Q30 42 5 25Z" fill="#2D9D5C" opacity="0.5"/><path d="M25 25 L30 35 L35 25" fill="#2D9D5C" opacity="0.5"/></svg><span>耳状 Auriculate</span></div>
+          </div>
+        </div>
+
+        <!-- 叶尖 -->
+        <div class="morph-card">
+          <h4 class="mc-title mc-green">叶尖 Leaf Apex</h4>
+          <div class="apex-list">
+            <div class="apex-item"><b>渐尖 Acuminate</b> — 长尾尖，如 <em>F. religiosa</em> 的长尾状叶尖</div>
+            <div class="apex-item"><b>急尖 Acute</b> — 角度&lt;90°的锐尖</div>
+            <div class="apex-item"><b>钝圆 Obtuse/Rounded</b> — 圆弧形末端</div>
+            <div class="apex-item"><b>微凹 Reticulate</b> — 顶端具浅凹</div>
+            <div class="apex-item"><b>尾尖 Caudate</b> — 延伸成长尾状（<em>F. religiosa</em> 典型特征）</div>
+          </div>
+        </div>
+
+        <!-- 叶缘 -->
+        <div class="morph-card">
+          <h4 class="mc-title mc-green">叶缘 Leaf Margin</h4>
+          <div class="margin-types">
+            <span class="marg-type">全缘 Entire（最常见）</span>
+            <span class="marg-type">波状 Undulate</span>
+            <span class="marg-type">锯齿 Serrate（Ficus 亚属特征）</span>
+            <span class="marg-type">细齿 Denticulate</span>
+            <span class="marg-type">外卷 Revolute</span>
+          </div>
+          <p class="mc-note">注意：<strong>全缘叶片</strong>在多数亚属中最常见；<strong>锯齿/齿状叶缘</strong>是 <em>Ficus</em>（原始榕亚属）的重要鉴别特征。</p>
+        </div>
+
+        <!-- 质地与大小 -->
+        <div class="morph-card">
+          <h4 class="mc-title mc-green">质地 Texture &amp; 大小 Size</h4>
+          <table class="prop-table">
+            <tr><td><b>膜质 Membranaceous</b></td><td>薄而半透明，如 <em>F. benjamina</em></td></tr>
+            <tr><td><b>纸质 Papery</b></td><td>中等厚度，最常见</td></tr>
+            <tr><td><b>革质 Coriaceous</b></td><td>厚而有光泽，如 <em>F. elastica</em>, <em>F. microcarpa</em></td></tr>
+            <tr><td><b>肉质 Succulent</b></td><td>肥厚多汁，如部分 <em>Sycidium</em></td></tr>
+            <tr><td colspan="2" style="padding-top:8px;border-top:1px solid rgba(255,255,255,0.06);"><b>长度范围：</b>2cm（<em>F. pumila</em> 小型叶）→ 60cm+（<em>F. auriculata</em> 大型叶）</td></tr>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ====== 器官3: 叶脉 Venation ====== -->
+    <div class="organ-panel" id="panel-venation">
+      <div class="organ-intro">
+        <h3 style="color:var(--accent-gold);">🔀 叶脉（Venation）— 分类学重要依据</h3>
+        <p>叶脉模式是区分近缘种的稳定特征，尤其<strong>侧脉数量、角度、网眼密度</strong>等参数在不同亚属间差异明显。</p>
+      </div>
+
+      <div class="morph-grid">
+
+        <!-- 脉序类型 -->
+        <div class="morph-card full-width">
+          <h4 class="mc-title mc-gold">脉序类型 Venation Pattern</h4>
+          <div class="ven-diagrams">
+            <div class="ven-item">
+              <svg viewBox="0 0 140 180" class="ven-svg">
+                <line x1="70" y1="170" x2="70" y2="10" stroke="#C4922E" stroke-width="2.5"/>
+                <line x1="70" y1="30" x2="20" y2="10" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="30" x2="120" y2="10" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="55" x2="15" y2="35" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="55" x2="125" y2="35" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="85" x2="12" y2="65" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="85" x2="128" y2="65" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="115" x2="18" y2="98" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="115" x2="122" y2="98" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="145" x2="25" y2="130" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="145" x2="115" y2="130" stroke="#C4922E" stroke-width="1.2"/>
+                <!-- 网状连接线 -->
+                <line x1="20" y1="10" x2="15" y2="35" stroke="#C4922E" stroke-width="0.5" opacity="0.4"/>
+                <line x1="15" y1="35" x2="12" y2="65" stroke="#C4922E" stroke-width="0.5" opacity="0.4"/>
+                <line x1="12" y1="65" x2="18" y2="98" stroke="#C4922E" stroke-width="0.5" opacity="0.4"/>
+                <line x1="120" y1="10" x2="125" y2="35" stroke="#C4922E" stroke-width="0.5" opacity="0.4"/>
+                <line x1="125" y1="35" x2="128" y2="65" stroke="#C4922E" stroke-width="0.5" opacity="0.4"/>
+                <line x1="128" y1="65" x2="122" y2="98" stroke="#C4922E" stroke-width="0.5" opacity="0.4"/>
+              </svg>
+              <h5>羽状脉 Pinnate</h5>
+              <p>中脉两侧羽状排列侧脉，最常见类型。<br>典型：<em>Urostigma</em> 大部分种类</p>
+            </div>
+            <div class="ven-item">
+              <svg viewBox="0 0 140 180" class="ven-svg">
+                <line x1="70" y1="170" x2="70" y2="10" stroke="#C4922E" stroke-width="2.5"/>
+                <line x1="70" y1="25" x2="15" y2="15" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="25" x2="125" y2="15" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="55" x2="10" y2="40" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="55" x2="130" y2="40" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="90" x2="8" y2="75" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="90" x2="132" y2="75" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="130" x2="18" y2="118" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="130" x2="122" y2="118" stroke="#C4922E" stroke-width="1.2"/>
+                <!-- 弓形连接 - brochidodromous -->
+                <path d="M15 15 Q5 27 10 40" stroke="#C4922E" stroke-width="0.8" fill="none" opacity="0.5"/>
+                <path d="M125 15 Q135 27 130 40" stroke="#C4922E" stroke-width="0.8" fill="none" opacity="0.5"/>
+                <path d="M10 40 Q3 57 8 75" stroke="#C4922E" stroke-width="0.8" fill="none" opacity="0.5"/>
+                <path d="M130 40 Q137 57 132 75" stroke="#C4922E" stroke-width="0.8" fill="none" opacity="0.5"/>
+              </svg>
+              <h5>弓形脉 Brochidodromous</h5>
+              <p>侧脉末端向上弯曲并连接成环。<br>典型：<em>F. elastica</em>, <em>F. benghalensis</em></p>
+            </div>
+            <div class="ven-item">
+              <svg viewBox="0 0 140 180" class="ven-svg">
+                <line x1="70" y1="170" x2="70" y2="10" stroke="#C4922E" stroke-width="2.5"/>
+                <line x1="70" y1="30" x2="18" y2="18" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="30" x2="122" y2="18" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="60" x2="12" y2="48" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="60" x2="128" y2="48" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="95" x2="15" y2="83" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="95" x2="125" y2="83" stroke="#C4922E" stroke-width="1.2"/>
+                <!-- camptodromous - 向内弯曲不连 -->
+                <path d="M18 18 Q10 33 12 48" stroke="#C4922E" stroke-width="0.8" fill="none" opacity="0.5" stroke-dasharray="3 2"/>
+                <path d="M122 18 Q130 33 128 48" stroke="#C4922E" stroke-width="0.8" fill="none" opacity="0.5" stroke-dasharray="3 2"/>
+              </svg>
+              <h5>曲行脉 Camptodromous</h5>
+              <p>侧脉末端向内弯曲但不形成闭合环。<br>典型：<em>F. benjamina</em>, <em>F. microcarpa</em></p>
+            </div>
+            <div class="ven-item">
+              <svg viewBox="0 0 140 180" class="ven-svg">
+                <line x1="70" y1="170" x2="70" y2="10" stroke="#C4922E" stroke-width="2.5"/>
+                <line x1="70" y1="20" x2="25" y2="10" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="20" x2="115" y2="10" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="50" x2="18" y2="38" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="50" x2="122" y2="38" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="85" x2="14" y2="73" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="85" x2="126" y2="73" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="120" x2="20" y2="108" stroke="#C4922E" stroke-width="1.2"/>
+                <line x1="70" y1="120" x2="120" y2="108" stroke="#C4922E" stroke-width="1.2"/>
+                <!-- 三级脉明显 -->
+                <line x1="25" y1="10" x2="40" y2="24" stroke="#C4922E" stroke-width="0.6" opacity="0.4"/>
+                <line x1="115" y1="10" x2="100" y2="24" stroke="#C4922E" stroke-width="0.6" opacity="0.4"/>
+                <line x1="18" y1="38" x2="44" y2="54" stroke="#C4922E" stroke-width="0.6" opacity="0.4"/>
+                <line x1="122" y1="38" x2="96" y2="54" stroke="#C4922E" stroke-width="0.6" opacity="0.4"/>
+              </svg>
+              <h5>三出脉 Tri-nerved</h5>
+              <p>基部三出脉，基生侧脉发达。<br>典型：<em>F. hispida</em>, <em>F. semicordata</em></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 侧脉特征 -->
+        <div class="morph-card">
+          <h4 class="mc-title mc-gold">侧脉特征 Lateral Veins</h4>
+          <ul class="mc-list">
+            <li><b>数量：</b>每侧 3–5 对（稀少型）→ 8–15 对（密集型）</li>
+            <li><b>角度：</b>45°–60°（锐角型，如 <em>F. elastica</em>） vs 70°–90°（宽角型，如 <em>F. virens</em>）</li>
+            <li><b>粗细：</b>纤细不明显 vs 粗壮隆起（如 <em>Pharmacosycea</em> 特征）</li>
+            <li><b>表面状态：</b>两面凸起 / 仅背面凸起 / 两面凹陷</li>
+          </ul>
+        </div>
+
+        <!-- 网眼 -->
+        <div class="morph-card">
+          <h4 class="mc-title mc-gold">网眼 Reticulum</h4>
+          <div class="retic-info">
+            <div class="retic-item">
+              <b>细密 Fine</b>
+              <p>网眼小而规则，肉眼难辨单个网眼</p>
+              <span class="retic-ex">常见于革质厚叶种类</span>
+            </div>
+            <div class="retic-item">
+              <b>粗疏 Coarse</b>
+              <p>网眼大而不规则，肉眼清晰可见</p>
+              <span class="retic-ex">见于纸质薄叶种类</span>
+            </div>
+            <div class="retic-item">
+              <b>不明显 Obscure</b>
+              <p>三级以上脉序退化或不明显</p>
+              <span class="retic-ex">部分肉质叶种类</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ====== 器官4: 托叶 Stipule ====== -->
+    <div class="organ-panel" id="panel-stipule">
+      <div class="organ-intro">
+        <h3 style="color:#AB47BC;">📐 托叶（Stipule）— 易被忽视的关键特征</h3>
+        <p>托叶是叶柄基部的附属结构，虽然常早落，但<strong>托叶痕（stipular scar）</strong>是永久性鉴定特征。托叶的类型、大小、持久性在不同亚属间差异显著。</p>
+      </div>
+
+      <div class="morph-grid">
+
+        <!-- 托叶类型 -->
+        <div class="morph-card full-width">
+          <h4 class="mc-title mc-purple">托叶类型 Stipule Types</h4>
+          <div class="stipule-gallery">
+            <div class="stipule-item">
+              <svg viewBox="0 0 100 120" class="stip-svg">
+                <rect x="46" y="60" width="8" height="50" fill="#888" opacity="0.5"/>
+                <path d="M46 60 L30 20 L46 5 L62 20 Z" fill="#AB47BC" opacity="0.6"/>
+                <text x="50" y="112" text-anchor="middle" font-size="9" fill="var(--text-secondary)">宿存</text>
+              </svg>
+              <h5>宿存 Persistent</h5>
+              <p>不脱落，包被芽体。典型：<em>Ficus</em> 亚属（原始榕亚属）</p>
+            </div>
+            <div class="stipule-item">
+              <svg viewBox="0 0 100 120" class="stip-svg">
+                <rect x="46" y="60" width="8" height="50" fill="#888" opacity="0.5"/>
+                <path d="M46 60 L30 25 L46 8 L62 25 Z" fill="#AB47BC" opacity="0.3" stroke="#AB47BC" stroke-width="1" stroke-dasharray="3 2"/>
+                <text x="50" y="112" text-anchor="middle" font-size="9" fill="var(--text-secondary)">早落</text>
+              </svg>
+              <h5>早落 Caducous</h5>
+              <p>叶展开后即脱落。最常见类型</p>
+            </div>
+            <div class="stipule-item">
+              <svg viewBox="0 0 100 120" class="stip-svg">
+                <rect x="46" y="55" width="8" height="55" fill="#888" opacity="0.5"/>
+                <path d="M36 55 L46 10 L56 55 Z" fill="#AB47BC" opacity="0.6"/>
+                <text x="50" y="112" text-anchor="middle" font-size="9" fill="var(--text-secondary)">合生</text>
+              </svg>
+              <h5>合生 Connate/Fused</h5>
+              <p>两枚托叶合生成管状/鞘状包围茎。<br>典型：<em>Sycidium</em> 亚属</p>
+            </div>
+            <div class="stipule-item">
+              <svg viewBox="0 0 100 120" class="stip-svg">
+                <rect x="46" y="60" width="8" height="50" fill="#888" opacity="0.5"/>
+                <path d="M46 60 L25 30 L46 5 L67 30 Z" fill="#AB47BC" opacity="0.6"/>
+                <text x="50" y="112" text-anchor="middle" font-size="9" fill="var(--text-secondary)">大型</text>
+              </svg>
+              <h5>大型 Big/Membranous</h5>
+              <p>膜质大型托叶，展开后明显可见。<br>典型：<em>Pharmacosycea</em> 部分</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 托叶痕 -->
+        <div class="morph-card">
+          <h4 class="mc-title mc-purple">托叶痕 Stipular Scar</h4>
+          <ul class="mc-list">
+            <li><b>环形 Annular：</b>托叶脱落后留下的完整环状痕迹（<em>Urostigma</em> 常见）</li>
+            <li><b>半环形 Semi-annular：</b>不完全环绕叶柄</li>
+            <li><b>线形 Linear：</b>细线状痕迹（<em>Sycidium</em> 合生托叶脱落后的特征）</li>
+            <li><b>无痕 Absent：</b>托叶极小或完全贴生不留痕迹</li>
+          </ul>
+        </div>
+
+        <!-- 托叶其他维度 -->
+        <div class="morph-card">
+          <h4 class="mc-title mc-purple">其他维度</h4>
+          <table class="prop-table">
+            <tr><td><b>颜色</b></td><td>淡绿 / 黄褐 / 棕红 / 带紫色斑纹</td></tr>
+            <tr><td><b>质地</b></td><td>膜质（最常见）/ 革质 / 纸质</td></tr>
+            <tr><td><b>表面</b></td><td>光滑 / 具绢毛 / 具腺点 / 具纵肋</td></tr>
+            <tr><td><b>长度</b></td><td>3–5mm（小型） → 20–40mm（大型，如 <em>F. maxima</em>）</td></tr>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ====== 器官5: 树皮 Bark ====== -->
+    <div class="organ-panel" id="panel-bark">
+      <div class="organ-intro">
+        <h3 style="color:#8D6E63;">🪵 树皮与乳汁（Bark &amp; Latex）</h3>
+        <p>树皮特征和乳汁性状是<strong>乔木型榕树</strong>的重要辅助鉴定指标，尤其在缺乏叶片和果实的情况下具有参考价值。</p>
+      </div>
+
+      <div class="morph-grid">
+
+        <!-- 树皮纹理 -->
+        <div class="morph-card full-width">
+          <h4 class="mc-title mc-brown">树皮纹理 Bark Texture</h4>
+          <div class="bark-gallery">
+            <div class="bark-item">
+              <div class="bark-swatch" style="background:linear-gradient(135deg,#5D4037,#4E342E);"></div>
+              <h5>光滑 Smooth</h5>
+              <p>表面平整，无明显裂隙。<br>典型：<em>F. elastica</em>, <em>F. benjamina</em></p>
+            </div>
+            <div class="bark-item">
+              <div class="bark-swatch" style="background:repeating-linear-gradient(0deg,#5D4037 0px,#5D4037 8px,#3E2723 8px,#3E2723 12px);"></div>
+              <h5>纵向裂纹 Fissured</h5>
+              <p>具纵向不规则裂隙。<br>典型：<em>F. benghalensis</em>, <em>F. religiosa</em></p>
+            </div>
+            <div class="bark-item">
+              <div class="bark-swatch" style="background:linear-gradient(135deg,#6D4C41 30%,#8D6E63 50%,#6D4C41 70%);border-radius:4px;"></div>
+              <h5>片状剥落 Exfoliating</h5>
+              <p>呈薄片状脱落。<br>典型：<em>F. virens</em>(黄葛树), <em>F. sur</em></p>
+            </div>
+            <div class="bark-item">
+              <div class="bark-swatch" style="background:radial-gradient(circle at 30% 30%,#8D6E63,#5D4037);"></div>
+              <h5>瘤突 Tuberculate</h5>
+              <p>表面具圆形或不规则瘤突。<br>典型：<em>F. sycomorus</em>, <em>F. ingens</em></p>
+            </div>
+            <div class="bark-item">
+              <div class="bark-swatch" style="background:linear-gradient(135deg,#A1887F,#6D4C41);"></div>
+              <h5>纤维性 Fibrous</h5>
+              <p>可剥离为纤维层。<br>典型：<em>F. carica</em>(无花果树皮)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 乳汁 -->
+        <div class="morph-card">
+          <h4 class="mc-title mc-brown">乳汁 Latex</h4>
+          <div class="latex-info">
+            <div class="latex-item">
+              <span class="latex-dot" style="background:#fff;"></span>
+              <b>白色乳液 White</b>
+              <p>最常见类型，几乎所有榕树均产白色乳汁</p>
+            </div>
+            <div class="latex-item">
+              <span class="latex-dot" style="background:#f5e6c8;"></span>
+              <b>淡黄色 Pale yellow</b>
+              <p>部分种类乳汁略带黄色调</p>
+            </div>
+            <div class="latex-item">
+              <span class="latex-dot" style="background:none;border:2px solid #666;"></span>
+              <b>稀少 Scanty</b>
+              <p>乳汁量极少或不易观察到<br>（<em>Sycomorus</em> 部分种类）</p>
+            </div>
+          </div>
+          <p class="mc-note">注意：乳汁性状受季节和植株年龄影响较大，仅作为辅助参考。</p>
+        </div>
+
+        <!-- 树皮颜色 -->
+        <div class="morph-card">
+          <h4 class="mc-title mc-brown">树皮颜色 Bark Color</h4>
+          <div class="bark-colors">
+            <span class="bark-clr" style="background:#5D4037;">灰褐色 Grey-brown</span>
+            <span class="bark-clr" style="background:#8D6E63;">灰白 Grey-white</span>
+            <span class="bark-clr" style="background:#4E342E;">暗灰 Dark grey</span>
+            <span class="bark-clr" style="background:#6D4C41;">棕褐 Brown</span>
+            <span class="bark-clr" style="background:#3E2723;">近黑 Near-black</span>
+            <span class="bark-clr" style="background:linear-gradient(90deg,#8D6E63,#5D4037);">斑驳 Mottled</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ====== 器官6: 生长习性 Habit ====== -->
+    <div class="organ-panel" id="panel-habit">
+      <div class="organ-intro">
+        <h3 style="color:var(--primary);">🌳 生长习性（Growth Habit）— 宏观分类线索</h3>
+        <p>榕属植物的生长型极为多样，从微型附生到巨型绞杀乔木均有。生长习性本身即为重要的<strong>亚属级分类指征</strong>。</p>
+      </div>
+
+      <div class="morph-grid">
+
+        <!-- 生长型剪影 -->
+        <div class="morph-card full-width">
+          <h4 class="mc-title mc-green">六种主要生长型 Growth Forms</h4>
+          <div class="habit-gallery">
+            <div class="habit-item">
+              <svg viewBox="0 0 100 150" class="habit-svg">
+                <rect x="45" y="120" width="10" height="28" fill="#5D4037"/>
+                <path d="M50 120 L50 50 Q50 30 30 20 Q50 10 70 20 Q50 30 50 50" fill="#2D9D5C" opacity="0.7"/>
+                <ellipse cx="50" cy="30" rx="30" ry="25" fill="#2D9D5C" opacity="0.5"/>
+              </svg>
+              <h5>直立乔木 Upright Tree</h5>
+              <p>单干直立高大乔木，高 10–40m。<br>典型：<em>Pharmacosycea</em>, <em>Sycomorus</em>, <em>Synoecia</em></p>
+              <span class="habit-tag">最常见</span>
+            </div>
+            <div class="habit-item">
+              <svg viewBox="0 0 100 150" class="habit-svg">
+                <rect x="45" y="120" width="10" height="28" fill="#5D4037"/>
+                <path d="M50 120 L50 70 M50 70 L25 45 M50 70 L75 45 M25 45 L15 25 M25 45 L35 25 M75 45 L65 25 M75 45 L85 25" stroke="#2D9D5C" stroke-width="3" fill="none" opacity="0.7"/>
+                <ellipse cx="50" cy="30" rx="38" ry="22" fill="#2D9D5C" opacity="0.4"/>
+              </svg>
+              <h5>灌木 Shrub</h5>
+              <p>多分枝矮小灌木，高 1–5m。<br>典型：<em>Ficus</em> 亚属大部分</p>
+            </div>
+            <div class="habit-item">
+              <svg viewBox="0 0 100 150" class="habit-svg">
+                <rect x="47" y="130" width="6" height="18" fill="#5D4037"/>
+                <path d="M50 130 Q50 100 50 80 Q30 70 20 50 Q35 55 50 60 Q65 55 80 50 Q70 70 50 80" fill="#2D9D5C" opacity="0.6"/>
+                <path d="M20 50 Q10 35 15 20 Q25 30 35 40" stroke="#2D9D5C" stroke-width="2" fill="none" opacity="0.5"/>
+                <path d="M80 50 Q90 35 85 20 Q75 30 65 40" stroke="#2D9D5C" stroke-width="2" fill="none" opacity="0.5"/>
+                <ellipse cx="50" cy="22" rx="30" ry="15" fill="#2D9D5C" opacity="0.4"/>
+              </svg>
+              <h5>绞杀 Strangler Fig</h5>
+              <p>附生开始，气生根下延包裹宿主最终独立。<br>典型：<em>F. benghalensis</em>, <em>F. virens</em></p>
+              <span class="habit-tag highlight">Urostigma 特色</span>
+            </div>
+            <div class="habit-item">
+              <svg viewBox="0 0 100 150" class="habit-svg">
+                <rect x="48" y="135" width="4" height="13" fill="#5D4037"/>
+                <ellipse cx="50" cy="138" rx="15" ry="5" fill="#5D4037" opacity="0.5"/>
+                <path d="M50 135 Q50 100 50 80 Q35 70 25 55 Q40 60 50 65 Q60 60 75 55 Q65 70 50 80" fill="#2D9D5C" opacity="0.6"/>
+                <ellipse cx="50" cy="45" rx="25" ry="18" fill="#2D9D5C" opacity="0.4"/>
+              </svg>
+              <h5>附生 Epiphyte</h5>
+              <p>附着于其他树木上生长，不接触地面。<br>典型：<em>F. microcarpa</em>(幼期), <em>F. benjamina</em></p>
+            </div>
+            <div class="habit-item">
+              <svg viewBox="0 0 100 150" class="habit-svg">
+                <line x1="10" y1="145" x2="90" y2="145" stroke="#5D4037" stroke-width="3"/>
+                <path d="M15 145 Q20 130 25 120 Q30 110 35 100 Q40 90 45 85 Q50 80 55 85 Q60 90 65 100 Q70 110 75 120 Q80 130 85 145" stroke="#26A69A" stroke-width="3" fill="none" opacity="0.7"/>
+                <ellipse cx="30" cy="95" rx="12" ry="8" fill="#26A69A" opacity="0.4"/>
+                <ellipse cx="55" cy="80" rx="14" ry="10" fill="#26A69A" opacity="0.4"/>
+                <ellipse cx="75" cy="108" rx="11" ry="7" fill="#26A69A" opacity="0.4"/>
+              </svg>
+              <h5>藤本/攀援 Liana/Vine</h5>
+              <p>蔓生或攀援生长，茎细长缠绕。<br>典型：<em>Sycidium</em> 亚属（薜荔、爬藤榕等）</p>
+              <span class="habit-tag highlight">Sycidium 特色</span>
+            </div>
+            <div class="habit-item">
+              <svg viewBox="0 0 100 150" class="habit-svg">
+                <rect x="45" y="120" width="10" height="28" fill="#5D4037"/>
+                <path d="M50 120 L50 60" stroke="#2D9D5C" stroke-width="4" fill="none" opacity="0.7"/>
+                <ellipse cx="35" cy="55" rx="12" ry="8" fill="#2D9D5C" opacity="0.5"/>
+                <ellipse cx="65" cy="45" rx="14" ry="9" fill="#2D9D5C" opacity="0.5"/>
+                <ellipse cx="50" cy="30" rx="16" ry="10" fill="#2D9D5C" opacity="0.5"/>
+                <ellipse cx="30" cy="25" rx="10" ry="7" fill="#2D9D5C" opacity="0.4"/>
+                <ellipse cx="72" cy="22" rx="11" ry="8" fill="#2D9D5C" opacity="0.4"/>
+              </svg>
+              <h5>老茎生果 Cauliflorous</h5>
+              <p>果实直接着生于主干和老枝上。<br>典型：<em>Synoecia</em> 亚属（聚果榕等）</p>
+              <span class="habit-tag highlight">Synoecia 特色</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 板根与气生根 -->
+        <div class="morph-card">
+          <h4 class="mc-title mc-green">板根 Buttress Roots &amp; 气生根 Aerial Roots</h4>
+          <ul class="mc-list">
+            <li><b>板根 Buttress roots：</b>大型乔木基部放射状的板状根。典型：<em>F. benghalensis</em>, <em>F. elastica</em>, <em>F. altissima</em></li>
+            <li><b>气生根 Aerial roots：</b>从枝条下垂的不定根。典型：<em>Urostigma</em> 绞杀榕类群</li>
+            <li><b>支柱根 Prop roots：</b>气生根触地后木质化形成的支撑根。典型：<em>F. benghalensis</em>"一树成林"</li>
+            <li><b>无特殊根系：</b>多数灌木和小乔木种类</li>
+          </ul>
+        </div>
+
+        <!-- 冠层形态 -->
+        <div class="morph-card">
+          <h4 class="mc-title mc-green">冠层形态 Crown Form</h4>
+          <div class="crown-types">
+            <div class="crown-item"><b>广伞形 Broad umbrella</b> — <em>F. benghalensis</em>, <em>F. religiosa</em></div>
+            <div class="crown-item"><b>圆锥形 Conical</b> — <em>F. elastica</em>, <em>F. altissima</em></div>
+            <div class="crown-item"><b>圆顶形 Domed/Rounded</b> — <em>F. microcarpa</em>, <em>F. benjamina</em></div>
+            <div class="crown-item"><b>不规则 Irregular</b> — 绞杀榕发育过程中</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 底部提示 -->
+    <div class="methodology-bg" style="border-radius:12px;padding:24px;margin-top:32px;">
+      <h4 style="color:var(--accent-gold);margin-bottom:12px;">💡 鉴定实践建议</h4>
+      <ol style="padding-left:18px;margin:4px 0;font-size:0.88em;line-height:2;color:var(--text-secondary)">
+        <li><b>优先观察隐头果：</b>如有果实，这是最有力的鉴定证据（7个诊断维度）</li>
+        <li><b>叶片作为补充：</b>结合叶形+叶脉+叶基+叶缘综合判断</li>
+        <li><b>多角度拍照：</b>正面、反面、侧面、局部特写各一张效果最佳</li>
+        <li><b>记录采集信息：</b>地点、海拔、生境有助于缩小候选范围</li>
+        <li><b>承认不确定性：</b>天然混淆组存在时，给出概率性判断比强行确定更科学</li>
+      </ol>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <p><a href="/">← 返回首页</a></p>
+  <p style="margin-top:12px;">Made with 🌿 · <span id="year"></span></p>
+</footer>
+
+<script src="/js/common.js?v=1"></script>
+<script>
+sharedInit();
+
+function switchOrgan(organ) {
+  // 切换标签激活态
+  document.querySelectorAll('.org-tab').forEach(t => t.classList.remove('active'));
+  document.querySelector(`[data-organ="${organ}"]`).classList.add('active');
+
+  // 切换面板
+  document.querySelectorAll('.organ-panel').forEach(p => p.classList.remove('active'));
+  const panel = document.getElementById(`panel-${organ}`);
+  if (panel) {
+    panel.classList.add('active');
+    panel.scrollIntoView({ behavior:'smooth', block:'start' });
+  }
+}
+</script>
+<style>
+/* ====== 形态学页专用样式 ====== */
+
+.page-header {
+  text-align:center;
+  margin-bottom:32px;
+}
+.page-badge {
+  display:inline-block;
+  background:var(--primary);
+  color:#fff;
+  padding:4px 14px;
+  border-radius:20px;
+  font-size:0.82em;
+  font-weight:600;
+  margin-bottom:12px;
+}
+.page-header h1 {
+  font-size:clamp(1.6rem,4vw,2.4rem);
+  line-height:1.3;
+  margin-bottom:14px;
+  background:linear-gradient(135deg,var(--primary),var(--accent-green));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.page-desc {
+  max-width:720px;
+  margin:0 auto;
+  color:var(--text-secondary);
+  font-size:0.95em;
+  line-height:1.8;
+}
+
+/* 器官标签导航 */
+.organ-tabs {
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  margin-bottom:24px;
+  justify-content:center;
+}
+.org-tab {
+  display:flex;align-items:center;gap:5px;
+  padding:8px 16px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.03);
+  color:var(--text-secondary);
+  cursor:pointer;
+  font-size:0.88em;
+  transition:all 0.2s;
+}
+.org-tab:hover { background:rgba(255,255,255,0.06); color:var(--text); }
+.org-tab.active {
+  background:var(--primary);
+  color:#fff;
+  border-color:var(--primary);
+  font-weight:600;
+}
+.org-icon { font-size:1.1em; }
+
+/* 器官面板 */
+.organ-panel { display:none; }
+.organ-panel.active { display:block; animation:fadeIn 0.3s ease; }
+
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
+
+.organ-intro {
+  margin-bottom:20px;
+  padding:18px 20px;
+  border-radius:10px;
+  background:rgba(255,255,255,0.02);
+  border-left:3px solid var(--primary);
+}
+.organ-intro h3 { margin:0 0 8px; font-size:1.15em; }
+.organ-intro p { margin:0; color:var(--text-secondary); font-size:0.92em; line-height:1.7; }
+
+/* 形态卡片网格 */
+.morph-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:16px;
+}
+.morph-card {
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:10px;
+  padding:18px;
+  transition:transform 0.2s;
+}
+.morph-card:hover { transform:translateY(-2px); }
+.morph-card.full-width { grid-column:1/-1; }
+
+.mc-title {
+  font-size:0.95em;
+  margin:0 0 12px;
+  padding-bottom:8px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.mc-red { color:var(--accent-red); border-color:rgba(199,93,74,0.2); }
+.mc-green { color:var(--primary); border-color:rgba(45,157,92,0.2); }
+.mc-gold { color:var(--accent-gold); border-color:rgba(196,146,46,0.2); }
+.mc-purple { color:#AB47BC; border-color:rgba(171,71,188,0.2); }
+.mc-brown { color:#8D6E63; border-color:rgba(141,110,99,0.2); }
+
+.mc-list { list-style:none;padding:0;margin:0; }
+.mc-list li {
+  padding:5px 0;
+  font-size:0.86em;
+  color:var(--text-secondary);
+  line-height:1.6;
+  border-bottom:1px dashed rgba(255,255,255,0.04);
+}
+.mc-list li:last-child { border-bottom:none; }
+.mc-note {
+  font-size:0.82em;
+  color:var(--text-muted);
+  margin-top:8px;
+  line-height:1.6;
+}
+
+/* 隐头果形状 */
+.morph-shapes {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.shape-item {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+  font-size:0.78em;
+  color:var(--text-secondary);
+  text-align:center;
+}
+.shape-item small { opacity:0.7; }
+
+/* 颜色标签 */
+.color-row { display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px; }
+.clr-chip {
+  padding:4px 12px;
+  border-radius:14px;
+  font-size:0.8em;
+  font-weight:600;
+}
+
+/* 孔口图解 */
+.ostiole-diagram {
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+}
+.ostiole-item {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  flex:1;
+  min-width:160px;
+}
+.ostiole-svg-wrap { }
+.ostiole-item p {
+  font-size:0.82em;
+  color:var(--text-secondary);
+  text-align:center;
+  line-height:1.5;
+  margin:0;
+}
+
+/* 排列方式 */
+.arrange-grid { display:grid;grid-template-columns:1fr 1fr;gap:10px; }
+.arrange-item {
+  padding:10px 12px;
+  border-radius:8px;
+  background:rgba(255,255,255,0.02);
+  font-size:0.84em;
+}
+.arrange-item b { display:block; color:var(--text); margin-bottom:4px; }
+.arrange-item p { margin:2px 0 6px; color:var(--text-secondary); font-size:0.9em; }
+.arr-tag {
+  display:inline-block;
+  padding:2px 8px;
+  border-radius:10px;
+  background:rgba(45,157,92,0.12);
+  color:var(--primary);
+  font-size:0.78em;
+  font-weight:600;
+}
+
+/* 纹理标签 */
+.texture-tags { display:flex;gap:8px;flex-wrap:wrap; }
+.tex-tag {
+  padding:4px 12px;
+  border-radius:14px;
+  background:rgba(199,93,74,0.1);
+  color:var(--accent-red);
+  font-size:0.82em;
+  border:1px solid rgba(199,93,74,0.15);
+}
+
+/* 叶形图谱 */
+.leaf-shape-gallery {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.lsg-item {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+  padding:10px;
+  border-radius:8px;
+  background:rgba(255,255,255,0.02);
+  min-width:90px;
+}
+.lsg-svg { width:60px;height:80px; }
+.lsg-item span { font-size:0.78em; color:var(--text); font-weight:500; }
+.lsg-item small { font-size:0.7em; color:var(--text-muted); }
+
+/* 叶基 */
+.base-shapes { display:flex;gap:10px;flex-wrap:wrap; }
+.bs-item { display:flex;flex-direction:column;align-items:center;gap:2px;font-size:0.76em;color:var(--text-secondary); }
+
+/* 叶尖 */
+.apex-list { }
+.apex-item {
+  padding:6px 0;
+  font-size:0.84em;
+  color:var(--text-secondary);
+  border-bottom:1px dashed rgba(255,255,255,0.04);
+}
+.apex-item:last-child { border-bottom:none; }
+
+/* 叶缘 */
+.margin-types { display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px; }
+.marg-type {
+  padding:4px 12px;
+  border-radius:14px;
+  background:rgba(45,157,92,0.1);
+  color:var(--primary);
+  font-size:0.82em;
+  border:1px solid rgba(45,157,92,0.15);
+}
+
+/* 属性表格 */
+.prop-table { width:100%;border-collapse:collapse;font-size:0.84em; }
+.prop-table td { padding:6px 8px;border-bottom:1px solid rgba(255,255,255,0.05);vertical-align:top; }
+.prop-table td:first-child { white-space:nowrap;color:var(--text);font-weight:500;width:120px; }
+.prop-table td:last-child { color:var(--text-secondary); }
+
+/* 叶脉图解 */
+.ven-diagrams { display:flex;gap:16px;flex-wrap:wrap;justify-content:center; }
+.ven-item {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  padding:14px;
+  border-radius:10px;
+  background:rgba(255,255,255,0.02);
+  min-width:160px;
+  flex:1;
+  max-width:200px;
+}
+.ven-svg { width:120px;height:150px; }
+.ven-item h5 { margin:4px 0 2px; font-size:0.88em; color:var(--accent-gold); }
+.ven-item p { margin:0; font-size:0.76em; color:var(--text-secondary); text-align:center; line-height:1.5; }
+
+/* 网眼 */
+.retic-info { display:flex;flex-direction:column;gap:8px; }
+.retic-item { padding:8px 10px;border-radius:8px;background:rgba(196,146,46,0.05); }
+.retic-item b { display:block;font-size:0.86em;color:var(--accent-gold);margin-bottom:2px; }
+.retic-item p { margin:0;font-size:0.8em;color:var(--text-secondary); }
+.retic-ex { display:block;font-size:0.76em;color:var(--text-muted);margin-top:3px; }
+
+/* 托叶图库 */
+.stipule-gallery { display:flex;gap:16px;flex-wrap:wrap;justify-content:center; }
+.stipule-item {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  padding:14px;
+  border-radius:10px;
+  background:rgba(255,255,255,0.02);
+  min-width:130px;
+  flex:1;
+  max-width:160px;
+}
+.stip-svg { width:70px;height:90px; }
+.stipule-item h5 { margin:4px 0 2px; font-size:0.86em; color:#AB47BC; }
+.stipule-item p { margin:0; font-size:0.76em; color:var(--text-secondary); text-align:center; line-height:1.5; }
+
+/* 树皮样本 */
+.bark-gallery { display:flex;gap:14px;flex-wrap:wrap; }
+.bark-item {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  padding:14px;
+  border-radius:10px;
+  background:rgba(255,255,255,0.02);
+  min-width:130px;
+  flex:1;
+  max-width:160px;
+}
+.bark-swatch {
+  width:100%;
+  height:50px;
+  border-radius:6px;
+  border:1px solid rgba(255,255,255,0.1);
+}
+.bark-item h5 { margin:4px 0 2px; font-size:0.84em; color:#8D6E63; }
+.bark-item p { margin:0; font-size:0.76em; color:var(--text-secondary); text-align:center; line-height:1.5; }
+
+/* 乳汁 */
+.latex-info { display:flex;flex-direction:column;gap:8px; }
+.latex-item {
+  display:flex;align-items:center;gap:8px;
+  padding:8px 10px;
+  border-radius:8px;
+  background:rgba(141,110,99,0.05);
+}
+.latex-dot {
+  width:16px;height:16px;border-radius:50%;
+  flex-shrink:0;
+  border:1px solid rgba(255,255,255,0.15);
+}
+.latex-item b { font-size:0.84em;color:var(--text);min-width:100px; }
+.latex-item p { margin:0;font-size:0.78em;color:var(--text-secondary); }
+
+/* 树皮颜色 */
+.bark-colors { display:flex;gap:8px;flex-wrap:wrap; }
+.bark-clr {
+  padding:4px 12px;
+  border-radius:14px;
+  font-size:0.78em;
+  color:#fff;
+  font-weight:500;
+}
+
+/* 生长型图库 */
+.habit-gallery { display:flex;gap:14px;flex-wrap:wrap;justify-content:center; }
+.habit-item {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  padding:14px;
+  border-radius:10px;
+  background:rgba(255,255,255,0.02);
+  min-width:130px;
+  flex:1;
+  max-width:165px;
+}
+.habit-svg { width:80px;height:110px; }
+.habit-item h5 { margin:4px 0 2px; font-size:0.84em; color:var(--primary); }
+.habit-item p { margin:0; font-size:0.74em; color:var(--text-secondary); text-align:center; line-height:1.5; }
+.habit-tag {
+  display:inline-block;padding:2px 8px;border-radius:10px;
+  background:rgba(45,157,92,0.12);color:var(--primary);
+  font-size:0.72em;font-weight:600;
+}
+.habit-tag.highlight {
+  background:rgba(196,146,46,0.15);color:var(--accent-gold);
+}
+
+/* 冠层 */
+.crown-types { }
+.crown-item {
+  padding:6px 10px;
+  font-size:0.84em;
+  color:var(--text-secondary);
+  border-bottom:1px dashed rgba(255,255,255,0.04);
+}
+.crown-item:last-child { border-bottom:none; }
+
+@media(max-width:640px){
+  .morph-grid { grid-template-columns:1fr; }
+  .organ-tabs { justify-content:flex-start; }
+  .arrange-grid { grid-template-columns:1fr; }
+  .ostiole-diagram { flex-direction:column; align-items:center; }
+  .ven-diagrams { flex-direction:column; align-items:center; }
+  .stipule-gallery { flex-direction:column; align-items:center; }
+  .bark-gallery { flex-direction:column; align-items:center; }
+  .habit-gallery { flex-direction:column; align-items:center; }
+  .leaf-shape-gallery { flex-direction:column; align-items:center; }
+}
+</style>
+</body>
+</html>

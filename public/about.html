@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>关于 | 榕树世界 — 榕-蜂共生与项目介绍</title>
+<link rel="icon" type="image/svg+xml" href="/img/logo.svg">
+<link rel="stylesheet" href="/css/common.css?v=1">
+</head>
+<body data-page="about">
+
+<nav class="nav" aria-label="主导航">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><img src="/img/logo.svg" alt="榕树世界"></a>
+    <a href="/" class="nav-link">首页</a>
+    <a href="/classification.html" class="nav-link">分类体系</a>
+    <a href="/lab.html" class="nav-link">鉴定实验室</a>
+    <a href="/morphology.html" class="nav-link">形态指南</a>
+    <a href="/gallery.html" class="nav-link">物种图鉴</a>
+    <a href="/distribution.html" class="nav-link">全球分布</a>
+    <div class="nav-more">
+      <button class="nav-more-btn" aria-label="更多导航"><span class="dot"><span></span><span></span><span></span></span></button>
+      <div class="nav-more-menu">
+        <a href="/gallery.html">🖼️ 物种图鉴</a>
+        <a href="/about.html">📖 关于项目</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="section" style="padding-top:80px;">
+  <div class="container">
+
+    <!-- 页面标题 -->
+    <div class="page-header">
+      <span class="page-badge">📖 About &amp; Ecology</span>
+      <h1>榕-蜂共生与项目介绍</h1>
+      <p class="page-desc">
+        深入了解榕属植物最独特的生物学特征——与榕小蜂的<strong>专性互惠共生关系</strong>，
+        以及本项目的构建方法、技术路线和学术依据。
+      </p>
+    </div>
+
+    <!-- ====== 第一部分：榕-蜂共生 ====== -->
+    <div class="eco-section">
+      <h2 class="section-title" style="color:var(--accent-gold);">
+        <span class="st-icon">🦋</span> 榕-蜂专性互惠共生
+      </h2>
+
+      <!-- 共生概览 -->
+      <div class="mutualism-overview">
+        <div class="mo-card mo-center">
+          <div class="mo-icon-wrap">
+            <span style="font-size:3rem;">🌿</span>
+          </div>
+          <h4>榕属植物 <em>Ficus</em></h4>
+          <p class="mo-sub">提供：封闭的隐头果（育室）+ 花粉 + 花蜜/短花柱花作为幼虫食物</p>
+          <div class="mo-facts">
+            <span>~800+ 种</span>
+            <span>泛热带分布</span>
+            <span>6 个亚属</span>
+          </div>
+        </div>
+
+        <div class="mo-arrow">
+          <span>⇄</span>
+          <small>1:1 专性配对<br>Obligate 1:1 Specificity</small>
+        </div>
+
+        <div class="mo-card mo-center">
+          <div class="mo-icon-wrap">
+            <span style="font-size:3rem;">🐝</span>
+          </div>
+          <h4>榕小蜂 Agaonidae</h4>
+          <p class="mo-sub">提供：专性传粉服务（唯一能进入隐头果孔口的昆虫）</p>
+          <div class="mo-facts">
+            <span>~800+ 对应种</span>
+            <span>体长 1–3mm</span>
+            <span>膜翅目·小蜂总科</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 共生生命周期 -->
+      <div class="lifecycle-section">
+        <h3 style="color:var(--primary);margin-bottom:16px;">🔄 共生生命周期（以雌雄同株 Ficus 为例）</h3>
+        <div class="lifecycle-timeline">
+
+          <div class="lc-step">
+            <div class="lc-num">1</div>
+            <div class="lc-content">
+              <h5>A 期 — 花前期 (Pre-female)</h5>
+              <p>隐头果内部雌花尚未成熟。外部特征：隐头果绿色、质地坚硬。此时不释放任何气味信号。</p>
+            </div>
+          </div>
+
+          <div class="lc-step">
+            <div class="lc-num">2</div>
+            <div class="lc-content">
+              <h5>B 期 — 雌花期 (Female phase)</h5>
+              <p><b>关键阶段。</b>隐头果孔口（ostiole）松开，释放特异性挥发性化合物吸引传粉榕小蜂。携带花粉的雌蜂从孔口钻入，在腔内爬行并主动为每朵雌花授粉。同时用产卵器将卵产于部分子房短花柱花中（这些花将发育为瘿 gall，供养蜂幼虫）。</p>
+              <span class="lc-tag lc-tag-key">传粉发生于此阶段</span>
+            </div>
+          </div>
+
+          <div class="lc-step">
+            <div class="lc-num">3</div>
+            <div class="lc-content">
+              <h5>C 期 — 间花期 (Interfloral)</h5>
+              <p>孔口关闭。受精子房开始发育为种子；被产卵的子房形成瘿，蜂卵孵化为幼虫。此阶段持续数周至数月（因种类而异）。雌蜂通常在完成产卵后死于果内。</p>
+            </div>
+          </div>
+
+          <div class="lc-step">
+            <div class="lc-num">4</div>
+            <div class="lc-content">
+              <h5>D/E 期 — 雄花期 (Male phase)</h5>
+              <p>隐头果内部：雄花成熟并散粉。新一代雄蜂先羽化，与同胞姐妹交配（常在果内完成），然后咬出出口隧道。无翅或短翅的雄蜂随即死亡。有翅雌蜂收集雄花花粉后，从雄蜂咬出的通道飞出，寻找新的 B 期隐头果——<b>循环重启</b>。</p>
+              <span class="lc-tag lc-tag-wasp">新代雌蜂羽化出果</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 关键科学事实 -->
+      <div class="fact-cards">
+        <div class="fact-card">
+          <span class="fc-icon">🔗</span>
+          <h4>7500 万年协同进化</h4>
+          <p>分子钟证据表明榕-蜂共生关系已持续约 75,000,000 年（白垩纪晚期），是已知最古老的专性互惠共生之一。Cruaud et al. (2012) <em>Proc R Soc B</em> 279:1488–1496.</p>
+        </div>
+        <div class="fact-card">
+          <span class="fc-icon">1️⃣</span>
+          <h4>1:1 物种特异性</h4>
+          <p>绝大多数情况下，一种榕树对应一种（或极少数几种高度特化的）传粉榕小蜂。这种极端的物种配对使共灭（coextinction）风险极高。</p>
+        </div>
+        <div class="fact-card">
+          <span class="fc-icon">🔑</span>
+          <h4>关键种生态角色</h4>
+          <p>榕树全年异步结果（phenological asynchrony），在热带森林食物稀缺期提供稳定的果实资源，支撑了包括灵长类、鸟类、蝙蝠在内的大量食果动物群落。</p>
+        </div>
+        <div class="fact-card">
+          <span class="fc-icon">🌡️</span>
+          <h4>气候变化的脆弱性</h4>
+          <p>温度和降水模式的改变可能破坏榕-蜂之间的物候同步性。即使微小的物候错位也可能导致双方繁殖失败，进而引发级联灭绝效应。</p>
+        </div>
+      </div>
+
+      <!-- 非传粉榕小蜂 -->
+      <div class="npw-section">
+        <h3 style="color:#E57373;margin-bottom:12px;">🪰 非传粉榕小蜂（Non-pollinating Fig Wasps）</h3>
+        <p style="font-size:0.88em;color:var(--text-secondary);margin-bottom:14px;line-height:1.7;">
+          除传粉榕小蜂外，每个隐头果内还栖息着多种<strong>非传粉榕小蜂</strong>。它们不参与传粉，
+          而是以寄生（parasitoid）、窃食（cleptoparasite）或植食（herbivore）方式利用榕树的资源。
+          一个隐头果内可同时存在 <strong>10–30 种</strong>不同的榕小蜂，构成一个微型食物网。
+        </p>
+        <div class="npw-types">
+          <div class="npw-item">
+            <b>寄生者 Parasitoids</b>
+            <p>产卵于传粉蜂或植食性非传粉蜂的幼虫体内/体表</p>
+            <span class="npw-ex">如 Apocrypta 属</span>
+          </div>
+          <div class="npw-item">
+            <b>窃食者 Cleptoparasites</b>
+            <p>竞争性地取食原本供其他幼虫使用的植物组织</p>
+            <span class="npw-ex">如 Sycophaga 属部分种</span>
+          </div>
+          <div class="npw-item">
+            <b>植食者 Gallers</b>
+            <p>诱导榕树组织形成瘿，其幼虫取食瘿内组织</p>
+            <span class="npw-ex">如 Sycophila 属</span>
+          </div>
+          <div class="npw-item">
+            <b>闯入者 Inquilines</b>
+            <p>占据已被其他昆虫利用的资源空间</p>
+            <span class="npw-ex">如某些 Apocryptophagus 种</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== 第二部分：关键种生态角色 ====== -->
+    <div class="eco-section">
+      <h2 class="section-title" style="color:var(--primary);">
+        <span class="st-icon">🌳</span> 关键种生态角色
+      </h2>
+
+      <div class="keystone-grid">
+        <div class="ks-card">
+          <div class="ks-icon">🍎</div>
+          <h4>全年食物源</h4>
+          <p>热带森林中，榕树是少数能够<strong>全年持续结果</strong>的木本植物类群。
+             在旱季或其他植物结果稀少的时期，榕果成为灵长类、鸟类、蝙蝠等
+             食果动物的关键甚至唯一的食物来源。<br><br>
+             研究表明在某些热带森林中，<strong>&gt;70%</strong> 的食果动物物种依赖榕果生存
+             （Kanhan & Shuaib 2018）。</p>
+        </div>
+        <div class="ks-card">
+          <div class="ks-icon">🏠</div>
+          <h4>栖息地工程师</h4>
+          <p>大型榕树（尤其是绞杀榕）创造独特的<strong>三维微生境结构</strong>：
+             其复杂的气生根网络、板根系统和多层次的冠层为附生植物、蕨类、兰花、
+             昆虫、两栖爬行类乃至小型哺乳动物提供了丰富的栖息地。<br><br>
+             一棵成熟的 <em>F. benghalensis</em> 可支持超过 <strong>1,200 种</strong> 其他生物
+             （含微生物）在其上生活。</p>
+        </div>
+        <div class="ks-card">
+          <div class="ks-icon">💧</div>
+          <h4>水文调节者</h4>
+          <p>榕树的深根系和巨大的蒸腾作用对局部水循环有显著影响。
+             大型榕树的日蒸腾量可达数百升，有助于维持林内湿度稳定。<br><br>
+             在河岸带，榕树的根系网络还能<strong>稳固河岸土壤</strong>，减少侵蚀。
+             许多传统社区在河岸保留榕树正是出于这一实用考量。</p>
+        </div>
+        <div class="ks-card">
+          <div class="ks-icon">🧬</div>
+          <h4>遗传多样性枢纽</h4>
+          <p>通过吸引大量食果动物，榕树成为热带森林中<strong>种子扩散网络的中心节点</strong>。
+             动物食用榕果后将种子传播至远方，促进了森林更新和基因流动。<br><br>
+             移除榕树可能导致种子扩散网络的崩溃，引发森林组成的不可逆变化
+             （McKey et al. 2010, <em>Conservation Biology</em>）。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== 第三部分：项目信息 ====== -->
+    <div class="project-section">
+      <h2 class="section-title" style="color:var(--accent-red);">
+        <span class="st-icon">⚙️</span> 项目方法与技术
+      </h2>
+
+      <div class="method-cards">
+        <div class="method-card">
+          <h4 class="mt-green">🤖 AI 技术栈</h4>
+          <ul class="mc-list-slim">
+            <li><b>视觉模型：</b>智谱 GLM-5V 多模态大模型（glm-5v-turbo）</li>
+            <li><b>推理方式：</b>6 步结构化推理链（整体评估 → 器官提取 → 亚属比对 → 种级筛选 → 生态补充 → 不确定性声明）</li>
+            <li><b>Prompt 工程：</b>仿照 DTM（Digital Taxonomic Model）学术严谨风格，嵌入完整 Berg & Corner 分类标准</li>
+            <li><b>输出格式：</b>严格 JSON Schema，包含 20+ 结构化字段</li>
+            <li><b>后处理：</b>拉丁学名自动斜体化（200+ 植物学词汇库）</li>
+          </ul>
+        </div>
+
+        <div class="method-card">
+          <h4 class="mt-blue">📚 分类学基础</h4>
+          <ul class="mc-list-slim">
+            <li><b>金标准框架：</b>Berg CC &amp; Corner EJH (2005) Flora Malesiana Ser.I 17(2)</li>
+            <li><b>分类单元：</b>属 → 6 亚属 → ~20 组 → ~40 亚组 → 800+ 种</li>
+            <li><b>形态特征库：</b>6 大器官 × 27+ 诊断维度</li>
+            <li><b>混淆矩阵：</b>5 组天然易混淆物种对（A-E），诚实标注准确率边界</li>
+            <li><b>物种数据：</b>POWO/Kew Plants of the World Online + FigWeb 在线分类资源</li>
+          </ul>
+        </div>
+
+        <div class="method-card">
+          <h4 class="mt-red">⚠️ 准确性与局限</h4>
+          <ul class="mc-list-slim">
+            <li><b>能做到：</b>亚属级分类（DT 编码级别置信度较高）；科/属级候选推断；提供诊断特征和混淆警告</li>
+            <li><b>天然限制：</b>F.benjamina vs F.microcarpa 仅凭叶片难区分；仅叶片时亚属判定置信度降低；幼态/病态标本识别困难</li>
+            <li><b>不适用场景：</b>非榕属植物（系统会正确拒绝）；严重退化的标本照片；分辨率过低图像</li>
+            <li><b>改进方向：</b>引入更多训练样本；结合地理信息辅助筛选；多图联合分析</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 核心参考文献 -->
+      <div class="ref-section">
+        <h3 style="color:var(--accent-gold);margin-bottom:14px;">📖 核心参考文献</h3>
+        <div class="ref-list">
+          <div class="ref-item">
+            <span class="ref-num">1</span>
+            <p><b>Berg CC &amp; Corner EJH (2005)</b> <em>Ficus (Moraceae).</em> Flora Malesiana Ser.I 17(2): 1–730.
+               <br><span class="ref-note">— 榕属分类学的奠基性专著，建立六亚属体系</span></p>
+          </div>
+          <div class="ref-item">
+            <span class="ref-num">2</span>
+            <p><b>Harrison RD (2005)</b> Figs and the diversity of tropical rainforests. <em>BioScience</em> 55(12):1053–1064.
+               <br><span class="ref-note">— 榕树作为关键种的生态学综述</span></p>
+          </div>
+          <div class="ref-item">
+            <span class="ref-num">3</span>
+            <p><b>Cook JM &amp; Rasplus JY (2003)</b> Fig wasps: taxonomic diversity and host specificity.
+               <em>Biol Rev</em> 78:293–344.<br><span class="ref-note">— 榕小蜂多样性和宿主专一性的全面综述</span></p>
+          </div>
+          <div class="ref-item">
+            <span class="ref-num">4</span>
+            <p><b>Weiblen GD (2002)</b> How to be a fig wasp. <em>Annu Rev Entomol</em> 47:299–330.
+               <br><span class="ref-note">— 榕小蜂生活史和行为生态学经典论文</span></p>
+          </div>
+          <div class="ref-item">
+            <span class="ref-num">5</span>
+            <p><b>Cruaud A et al. (2012)</b> An exceptional coevolutionary relationship between figs and their pollinating wasps.
+               <em>Proc R Soc B</em> 279:1488–1496.<br><span class="ref-note">— 分子钟证据：7500万年协同进化</span></p>
+          </div>
+          <div class="ref-item">
+            <swan class="ref-num">6</span>
+            <p><b>Weiblen GD (2020)</b> <em>The Fig Tree Flora of New Guinea.</em> National Herbarium of the Netherlands.
+               <br><span class="ref-note">— 新几内亚榕属志（全球最大多样性中心）</span></p>
+          </div>
+          <div class="ref-item">
+            <span class="ref-num">7</span>
+            <p><b>POWO / Kew</b> Plants of the World Online. https://powo.science.kew.org/
+               <br><span class="ref-note">— 全球植物物种权威数据库</span></p>
+          </div>
+          <div class="ref-item">
+            <span class="ref-num">8</span>
+            <p><b>FigWeb</b> Online resource for fig and fig wasp research. http://www.figweb.org/
+               <br><span class="ref-note">— 榕树与榕小蜂在线分类与生态学资源平台</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 项目声明 -->
+      <div class="disclaimer-box">
+        <h4 style="color:var(--accent-gold);margin-bottom:10px;">⚖️ 免责声明</h4>
+        <p style="font-size:0.85em;color:var(--text-secondary);line-height:1.8;margin:0;">
+          本网站提供的 AI 鉴定结果<strong>仅供参考和学术研究用途</strong>，不能替代专业植物分类学家的鉴定意见。
+          榕属物种的准确鉴定往往需要综合观察多个器官（叶、花、果、托叶、树皮等）、
+          参考模式标本、并结合分子系统学证据。AI 视觉识别在以下情况可能产生误判：
+          图像质量不佳、仅展示单一器官、拍摄对象处于非典型生长阶段、
+          或涉及天然混淆组内的近缘物种。使用本系统的用户应理解上述局限性，
+          并在需要精确鉴定时咨询专业植物学家。
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <p><a href="/">← 返回首页</a></p>
+  <p style="margin-top:12px;">Made with 🌿 · <span id="year"></span></p>
+</footer>
+
+<script src="/js/common.js?v=1"></script>
+<script>sharedInit();</script>
+<style>
+/* ====== 关于页专用样式 ====== */
+
+.page-header {
+  text-align:center;
+  margin-bottom:32px;
+}
+.page-badge {
+  display:inline-block;
+  background:var(--primary);
+  color:#fff;
+  padding:4px 14px;
+  border-radius:20px;
+  font-size:0.82em;
+  font-weight:600;
+  margin-bottom:12px;
+}
+.page-header h1 {
+  font-size:clamp(1.6rem,4vw,2.4rem);
+  line-height:1.3;
+  margin-bottom:14px;
+  background:linear-gradient(135deg,var(--primary),var(--accent-green));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.page-desc {
+  max-width:720px;
+  margin:0 auto;
+  color:var(--text-secondary);
+  font-size:0.95em;
+  line-height:1.8;
+}
+
+/* 章节标题 */
+.eco-section { margin-bottom:36px; }
+.section-title {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:1.35rem;
+  margin-bottom:20px;
+  padding-bottom:12px;
+  border-bottom:2px solid rgba(255,255,255,0.06);
+}
+.st-icon { font-size:1.5rem; }
+
+/* 共生概览 */
+.mutualism-overview {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  padding:24px;
+  border-radius:12px;
+  background:rgba(196,146,46,0.04);
+  border:1px solid rgba(196,146,46,0.12);
+  margin-bottom:28px;
+}
+.mo-card {
+  flex:1;
+  min-width:220px;
+  max-width:320px;
+  text-align:center;
+  padding:20px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.08);
+}
+.mo-icon-wrap { margin-bottom:8px; }
+.mo-card h4 {
+  margin:6px 0 6px;
+  font-size:1.05em;
+}
+.mo-card h4 em { font-style:italic; }
+.mo-sub {
+  font-size:0.8em;
+  color:var(--text-secondary);
+  line-height:1.5;
+  margin-bottom:10px;
+}
+.mo-facts {
+  display:flex;
+  gap:6px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.mo-facts span {
+  padding:3px 10px;
+  border-radius:12px;
+  background:rgba(45,157,92,0.1);
+  color:var(--primary);
+  font-size:0.76em;
+  font-weight:600;
+}
+.mo-arrow {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+}
+.mo-arrow span {
+  font-size:2rem;
+  color:var(--accent-gold);
+  animation:pulseArrow 2s ease-in-out infinite;
+}
+@keyframes pulseArrow {
+  0%,100%{opacity:0.5;transform:scale(1);}
+  50%{opacity:1;transform:scale(1.1);}
+}
+.mo-arrow small {
+  font-size:0.68em;
+  color:var(--text-muted);
+  text-align:center;
+}
+
+/* 生命周期时间线 */
+.lifecycle-timeline {
+  position:relative;
+  padding-left:30px;
+}
+.lifecycle-timeline::before {
+  content:'';
+  position:absolute;
+  left:11px;
+  top:0;
+  bottom:0;
+  width:2px;
+  background:linear-gradient(to bottom,var(--primary),var(--accent-gold),var(--accent-red));
+  border-radius:1px;
+}
+.lc-step {
+  position:relative;
+  margin-bottom:22px;
+}
+.lc-num {
+  position:absolute;
+  left:-30px;
+  width:24px;height:24px;
+  border-radius:50%;
+  background:var(--primary);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:0.78em;
+  font-weight:700;
+  line-height:1;
+}
+.lc-content {
+  padding:14px 16px;
+  border-radius:10px;
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(255,255,255,0.06);
+}
+.lc-content h5 {
+  margin:0 0 6px;
+  font-size:0.92em;
+  color:var(--primary);
+}
+.lc-content p {
+  margin:0;
+  font-size:0.84em;
+  color:var(--text-secondary);
+  line-height:1.7;
+}
+.lc-tag {
+  display:inline-block;
+  margin-top:8px;
+  padding:2px 10px;
+  border-radius:10px;
+  font-size:0.74em;
+  font-weight:600;
+}
+.lc-tag-key { background:rgba(45,157,92,0.12);color:var(--primary); }
+.lc-tag-wasp { background:rgba(156,39,176,0.12);color:#BA68C8; }
+
+/* 科学事实卡片 */
+.fact-cards {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:14px;
+  margin-top:20px;
+}
+.fact-card {
+  padding:18px;
+  border-radius:10px;
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(255,255,255,0.07);
+  transition:transform 0.2s;
+}
+.fact-card:hover { transform:translateY(-2px); }
+.fc-icon { font-size:1.6rem;display:block;margin-bottom:8px; }
+.fact-card h4 {
+  font-size:0.92em;
+  margin:0 0 6px;
+  color:var(--text);
+}
+.fact-card p {
+  font-size:0.8em;
+  color:var(--text-secondary);
+  line-height:1.65;
+  margin:0;
+}
+
+/* 非传粉榕小蜂 */
+.npw-section {
+  margin-top:24px;
+  padding:18px;
+  border-radius:10px;
+  background:rgba(229,115,115,0.04);
+  border:1px solid rgba(229,115,115,0.1);
+}
+.npw-types {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:10px;
+}
+.npw-item {
+  padding:12px;
+  border-radius:8px;
+  background:rgba(255,255,255,0.02);
+}
+.npw-item b {
+  display:block;
+  font-size:0.85em;
+  color:#E57373;
+  margin-bottom:4px;
+}
+.npw-item p {
+  margin:0 0 4px;
+  font-size:0.78em;
+  color:var(--text-secondary);
+  line-height:1.5;
+}
+.npw-ex {
+  display:inline-block;
+  font-size:0.72em;
+  color:var(--text-muted);
+  font-style:italic;
+}
+
+/* 关键种网格 */
+.keystone-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:14px;
+}
+.ks-card {
+  padding:18px;
+  border-radius:10px;
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(255,255,255,0.07);
+  transition:transform 0.2s;
+}
+.ks-card:hover { transform:translateY(-2px); }
+.ks-icon { font-size:1.8rem;display:block;margin-bottom:8px; }
+.ks-card h4 {
+  font-size:0.95em;
+  margin:0 0 8px;
+  color:var(--primary);
+}
+.ks-card p {
+  font-size:0.82em;
+  color:var(--text-secondary);
+  line-height:1.7;
+  margin:0;
+}
+
+/* 项目方法卡片 */
+.method-cards {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:14px;
+  margin-bottom:24px;
+}
+.method-card {
+  padding:18px;
+  border-radius:10px;
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(255,255,255,0.07);
+}
+.method-card h4 {
+  font-size:0.95em;
+  margin:0 0 12px;
+  padding-bottom:8px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.mc-list-slim {
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+.mc-list-slim li {
+  padding:5px 0;
+  font-size:0.83em;
+  color:var(--text-secondary);
+  line-height:1.6;
+  border-bottom:1px dashed rgba(255,255,255,0.04);
+}
+.mc-list-slim li:last-child { border-bottom:none; }
+.mt-green { color:var(--primary); }
+.mt-blue { color:#42A5F5; }
+.mt-red { color:var(--accent-red); }
+
+/* 参考文献 */
+.ref-section { margin-top:24px; }
+.ref-list { display:flex;flex-direction:column;gap:8px; }
+.ref-item {
+  display:flex;
+  gap:12px;
+  padding:12px 14px;
+  border-radius:8px;
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(255,255,255,0.05);
+}
+.ref-num {
+  width:24px;height:24px;
+  border-radius:50%;
+  background:var(--accent-gold);
+  color:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:0.78em;
+  font-weight:700;
+  flex-shrink:0;
+}
+.ref-item p {
+  margin:0;
+  font-size:0.82em;
+  color:var(--text-secondary);
+  line-height:1.6;
+}
+.ref-note {
+  display:block;
+  font-size:0.88em;
+  color:var(--text-muted);
+  margin-top:3px;
+  font-style:italic;
+}
+
+/* 免责声明 */
+.disclaimer-box {
+  padding:18px 20px;
+  border-radius:10px;
+  background:rgba(199,93,74,0.05);
+  border:1px solid rgba(199,93,74,0.15);
+  margin-top:24px;
+}
+
+@media(max-width:640px){
+  .mutualism-overview { flex-direction:column; }
+  .mo-arrow { transform:rotate(90deg); }
+  .fact-cards { grid-template-columns:1fr; }
+  .keystone-grid { grid-template-columns:1fr; }
+  .method-cards { grid-template-columns:1fr; }
+  .npw-types { grid-template-columns:1fr; }
+  .lc-content { padding:10px 12px; }
+}
+</style>
+</body>
+</html>
