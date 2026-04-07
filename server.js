@@ -13,10 +13,10 @@ const app = express();
 const PORT = process.env.FICUS_PORT || 3243;
 const BASE_DIR = __dirname;
 
-// Zhipu GLM-5V Config
-const ZHIPU_API_KEY = process.env.ZHIPU_API_KEY;
-const ZHIPU_BASE_URL = process.env.ZHIPU_BASE_URL || 'https://open.bigmodel.cn/api/coding/paas/v4/chat/completions';
-const ZHIPU_MODEL = process.env.ZHIPU_MODEL || 'glm-5v-turbo';
+// GLM-5V Vision Model Config (Anthropic-compatible API)
+const AI_BASE_URL = process.env.ANTHROPIC_BASE_URL || 'https://open.bigmodel.cn/api/anthropic';
+const AI_MODEL = process.env.ANTHROPIC_MODEL || 'glm-5v-turbo';
+const AI_AUTH_TOKEN = process.env.ANTHROPIC_AUTH_TOKEN;
 
 const log = createLogger('server');
 const logIdentify = createLogger('identify');
@@ -443,23 +443,24 @@ app.post('/api/identify-ficus', identifyFicusLimiter, async (req, res) => {
     const idTimeout = setTimeout(() => idController.abort(), 120_000);
     let response;
     try {
-      response = await fetch(ZHIPU_BASE_URL, {
+      response = await fetch(`${AI_BASE_URL}/v1/messages`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${ZHIPU_API_KEY}`
+          'x-api-key': AI_AUTH_TOKEN,
+          'anthropic-version': '2023-06-01'
         },
         signal: idController.signal,
         body: JSON.stringify({
-          model: ZHIPU_MODEL,
+          model: AI_MODEL,
+          system: systemPrompt,
           messages: [
-            { role: 'system', content: systemPrompt },
             { role: 'user', content: [
               { type: 'text', text: userPrompt },
-              { type: 'image_url', image_url: { url: imageData } }
+              { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: base64Data } }
             ]}
           ],
-          max_tokens: 20000,
+          max_tokens: 16384,
           temperature: 0.3
         })
       });
@@ -469,14 +470,18 @@ app.post('/api/identify-ficus', identifyFicusLimiter, async (req, res) => {
 
     if (!response.ok) {
       const errText = await response.text();
-      reqLog.error('Zhipu API error: status=%s body=%s', response.status, errText.slice(0, 500));
+      reqLog.error('GLM-5V API error: status=%s body=%s', response.status, errText.slice(0, 500));
       return res.status(500).json({ error: 'AI模型调用失败', details: errText });
     }
 
     const data = await response.json();
-    let content = data.choices?.[0]?.message?.content || '';
+    let content = '';
+    // Anthropic API 返回格式: { content: [{ type: "text", text: "..." }] }
+    if (data.content && Array.isArray(data.content)) {
+      content = data.content.filter(c => c.type === 'text').map(c => c.text).join('');
+    }
     reqLog.info('AI response received (%sms) model=%s content_len=%s',
-      t.elapsed.toFixed(0), data.model, content.length
+      t.elapsed.toFixed(0), data.model || AI_MODEL, content.length
     );
 
     // 尝试从返回中提取JSON
@@ -615,7 +620,8 @@ app.get('/sitemap.xml', (req, res) => {
 app.listen(PORT, () => {
   log.info('========================================');
   log.info(' 🌿 ficus-id server started on port %s', PORT);
-  log.info('   AI Model: %s', ZHIPU_MODEL);
-  log.info('   API Key: %s...%s', ZHIPU_API_KEY ? ZHIPU_API_KEY.slice(0, 8) : '(NOT SET)', ZHIPU_API_KEY ? '***' : '');
+  log.info('   AI Model: %s', AI_MODEL);
+  log.info('   API Base: %s', AI_BASE_URL);
+  log.info('   Auth Token: %s...%s', AI_AUTH_TOKEN ? AI_AUTH_TOKEN.slice(0, 8) : '(NOT SET)', AI_AUTH_TOKEN ? '***' : '');
   log.info('========================================');
 });
