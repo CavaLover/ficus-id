@@ -1,0 +1,13 @@
+node_modules/
+data/
+*.log
+.DS_Store
+.env
+-e
+# 截图和测试快照
+screenshots/
+.playwright-cli/
+.playwright-mcp/
+screenshot-*.png
+verify-*.png
+PROFILE

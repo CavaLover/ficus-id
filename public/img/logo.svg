@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Ficus leaf logo -->
+  <path d="M50 8 C30 8 12 28 12 52 C12 76 30 92 50 92 C70 92 88 76 88 52 C88 28 70 8 50 8Z"
+        fill="#2D9D5C" opacity="0.9"/>
+  <path d="M50 14 C34 14 18 32 18 52 C18 72 34 86 50 86 C66 86 82 72 82 52 C82 32 66 14 50 14Z"
+        fill="#3ABF6F" opacity="0.4"/>
+  <!-- Central vein -->
+  <path d="M50 20 L50 80" stroke="#0a120d" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Left lateral veins -->
+  <path d="M50 35 Q35 32 22 38" stroke="#0a120d" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  <path d="M50 48 Q33 44 18 52" stroke="#0a120d" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  <path d="M50 61 Q35 58 22 66" stroke="#0a120d" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  <!-- Right lateral veins -->
+  <path d="M50 35 Q65 32 78 38" stroke="#0a120d" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  <path d="M50 48 Q67 44 82 52" stroke="#0a120d" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  <path d="M50 61 Q65 58 78 66" stroke="#0a120d" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  <!-- Small syconium (fig fruit) accent -->
+  <circle cx="68" cy="70" r="6" fill="#C4922E" opacity="0.85"/>
+  <circle cx="68" cy="70" r="3" fill="#C75D4A" opacity="0.6"/>
+</svg>
