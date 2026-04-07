@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧪 榕属物种鉴定实验室 | 🌿 榕树世界</title>
+<link rel="icon" type="image/svg+xml" href="/img/logo.svg">
+<link rel="stylesheet" href="/css/common.css?v=1">
+<meta name="description" content="上传植物照片，AI基于Berg & Corner (2005)分类体系识别榕属植物的亚属、组乃至物种级别分类地位。由GLM-5V视觉模型驱动。">
+<meta property="og:title" content="🧪 榕属物种鉴定实验室 | 🌿 榕树世界">
+<meta property="og:description" content="上传植物照片，AI基于Berg & Corner六亚属体系自动识别榕属植物。支持叶片、隐头果、树皮等多器官鉴定。">
+<meta property="og:image" content="https://ficus.gqy25.top/img/syconium.jpg">
+<meta property="og:url" content="https://ficus.gqy25.top/lab.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebPage","name":"🧪 榕属物种鉴定实验室 | 🌿 榕树世界","description":"上传植物照片，AI（GLM-5V视觉模型）基于Berg&Corner(2005)六亚属体系自动识别榕属植物亚属、组乃至物种。","url":"https://ficus.gqy25.top/lab.html","isPartOf":{"@type":"WebSite","name":"榕树世界·万物之荫","url":"https://ficus.gqy25.top"},"inLanguage":"zh-CN"}]</script>
+</head>
+<body data-page="lab">
+<a href="#main-content" class="skip-link">跳转到主要内容</a>
+
+<nav class="nav" aria-label="主导航">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><img src="/img/logo.svg" alt="榕树世界"></a>
+    <a href="/" class="nav-link">首页</a>
+    <a href="/classification.html" class="nav-link">分类体系</a>
+    <a href="/lab.html" style="color:var(--primary);font-weight:600;">鉴定实验室</a>
+    <a href="/morphology.html" class="nav-link">形态指南</a>
+    <a href="/gallery.html" class="nav-link">物种图鉴</a>
+    <a href="/distribution.html" class="nav-link">全球分布</a>
+    <div class="nav-more">
+      <button class="nav-more-btn" aria-label="更多导航"><span class="dot"><span></span><span></span><span></span></span></button>
+      <div class="nav-more-menu">
+        <a href="/gallery.html">🖼️ 物种图鉴</a>
+        <a href="/about.html">📖 关于项目</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <h1>🧪 榕属物种鉴定实验室</h1>
+  <p>基于 <strong>Berg &amp; Corner (2005)</strong> 权威分类体系，AI 识别榕属植物的亚属、组乃至物种级别分类地位。由 <strong>GLM-5V</strong> 多模态视觉模型驱动。</p>
+  <div class="lab-hero-stats">
+    <div class="lab-stat-badge"><span class="ls-icon">🏛️</span><span><span class="ls-val">Berg-Corner</span> 金标准框架</span></div>
+    <div class="lab-stat-badge"><span class="ls-icon">6</span><span><span class="ls-val">6</span> 亚属</span></div>
+    <div class="lab-stat-badge"><span class="ls-icon">🤖</span><span><span class="ls-val">GLM-5V</span> 多模态识别</span></div>
+    <div class="lab-stat-badge"><span class="ls-icon">800+</span><span><span class="ls-val">800+</span> 种榕树</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+    <div class="lab-layout">
+      <!-- 左侧：上传+预览 -->
+      <div class="lab-left">
+        <div class="lab-left-title"><span class="llt-icon">📤</span>样本上传</div>
+        <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
+          <input type="file" id="fileInput" accept="image/*" class="hidden" onchange="handleUpload(event)">
+          <div id="uploadPlaceholder">
+            <div class="upload-icon">📷</div>
+            <p>点击或拖拽上传榕树照片</p>
+            <p class="upload-hint">支持 JPG / PNG / WebP，建议清晰拍摄鉴定部位（叶片正反面、隐头果、树皮纹理等）</p>
+          </div>
+          <img id="previewImg" src="" alt="" class="hidden" style="max-width:100%;border-radius:12px;">
+        </div>
+
+        <div class="lab-actions hidden" id="labActions">
+          <button class="btn btn-primary" id="analyzeBtn" onclick="analyzeImage()">🔍 AI 鉴定</button>
+          <button class="btn btn-outline" onclick="resetLab()">🔄 重新上传</button>
+        </div>
+
+        <!-- 扫描分析层 -->
+        <div class="lab-scan-overlay hidden" id="labScanOverlay">
+          <div class="scan-container" id="scanContainer">
+            <img class="scan-preview" id="scanPreview" src="" alt="">
+            <div class="scan-line"></div>
+            <div class="scan-glow"></div>
+            <div class="scan-corner-tl"></div>
+            <div class="scan-corner-tr"></div>
+            <div class="scan-corner-bl"></div>
+            <div class="scan-corner-br"></div>
+          </div>
+          <div class="stage-info">
+            <div class="stage-icon" id="stageIcon">🔬</div>
+            <span class="stage-text" id="statusText">正在接收图像...</span>
+          </div>
+          <div class="stage-progress">
+            <div class="stage-bar" id="stageBar"></div>
+          </div>
+        </div>
+
+        <!-- 右侧：结果面板 -->
+        <div class="lab-right hidden" id="labResult">
+          <!-- 骨架屏 -->
+          <div class="skeleton-card" id="skeletonCard">
+            <div class="sk-header"><div class="sk-icon sk-shimmer"></div><div class="sk-title sk-shimmer"></div></div>
+            <div class="sk-body">
+              <div class="sk-line sk-shimmer short"></div>
+              <div class="sk-line sk-shimmer"></div>
+              <div class="sk-line sk-shimmer long"></div>
+              <div class="sk-tags"><div class="sk-tag sk-shimmer"></div><div class="sk-tag sk-shimmer"></div><div class="sk-tag sk-shimmer"></div></div>
+            </div>
+          </div>
+
+          <!-- 真实结果 -->
+          <div class="result-card hidden" id="realResultCard">
+            <div class="result-header">
+              <span class="result-type-icon" id="resultIcon">❓</span>
+              <div>
+                <h3 id="resultType">分析结果</h3>
+                <span class="result-confidence" id="resultConfidence"></span>
+              </div>
+            </div>
+            <div class="result-body">
+              <!-- Row 1: 物种信息 -->
+              <div class="rb-main"><h4>🔍 鉴定结果</h4><p id="resultDesc"></p><div class="feature-tags" id="resultFeatures"></div></div>
+
+              <!-- Row 2: 分类层级 + 生长型 -->
+              <div class="rb-metrics">
+                <div class="rb-metric"><h4>🏷️ 亚属</h4><span class="guild-badge" id="subgenusBadge"></span></div>
+                <div class="rb-metric"><h4>📋 组/Section</h4><span class="guild-badge" id="sectionBadge" style="background:rgba(123,109,176,0.15);color:#b09cd4;"></span></div>
+                <div class="rb-metric"><h4>🌳 生长型</h4><span class="guild-badge" id="growthFormBadge"></span></div>
+              </div>
+
+              <!-- Row 3: 观察到的器官特征 -->
+              <div class="rb-wide"><h4>👁 观察器官</h4><p id="organPartTag" style="display:inline-block;padding:4px 12px;border-radius:14px;font-size:0.8em;background:rgba(45,157,92,0.1);color:var(--accent-green);margin-bottom:8px;"></p><div id="observedDesc"></div></div>
+
+              <!-- Row 4: 形态特征 -->
+              <div class="rb-wide"><h4>📐 关键诊断特征</h4><div class="feature-tags" id="diagFeatures"></div></div>
+
+              <!-- Row 5: 备选物种 -->
+              <div class="rb-wide"><h4>🐛 备选物种</h4><div id="altSpecies" style="display:flex;flex-wrap:wrap;gap:8px;"></div></div>
+
+              <!-- Row 6: 混淆警告 -->
+              <div class="rb-warning hidden" id="confusionSection"><p id="confusionText"></p></div>
+
+              <!-- Row 7: 榕小蜂信息 -->
+              <div class="rb-ficus-wasp hidden" id="waspSection">
+                <h4>🐝 传粉榕小蜂</h4>
+                <p id="waspDesc" style="font-size:0.88em;line-height:1.6;color:var(--text-secondary);"></p>
+              </div>
+
+              <!-- Row 8: 生态背景 -->
+              <div class="rb-pair">
+                <div class="rb-half"><h4>🌍 原生分布</h4><p id="nativeRange"></p></div>
+                <div class="rb-half"><h4>🏞️ 典型生境</h4><p id="habitatInfo"></p></div>
+              </div>
+
+              <!-- Row 9: 鉴别诊断 -->
+              <div class="rb-wide hidden" id="ddSection"><h4>⚖️ 鉴别诊断</h4><p id="diffDiag" style="font-size:0.85em;color:var(--text-dim);"></p></div>
+
+              <!-- Row 10: 局限性 -->
+              <div class="rb-note hidden" id="limitSection"><p id="limitText"></p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右侧默认：亚属图鉴 -->
+        <div class="lab-right fade-in delay-2" id="labExamples">
+          <h3>📚 六亚属图鉴（点击了解）</h3>
+          <div class="lab-examples-wrap">
+            <div class="example-grid" id="exampleGrid"></div>
+            <div class="lab-tips">
+              <p class="tips-title">💡 拍摄建议</p>
+              <ul style="color:var(--text-muted);font-size:0.8em;padding-left:16px;line-height:1.75;margin:0">
+                <li>拍摄时让光线均匀，避免阴影遮挡关键部位</li>
+                <li>同时拍到叶片正面和背面更有利于鉴定</li>
+                <li>隐头果是重要的第二鉴定依据，如有请一并拍摄</li>
+                <li>树皮纹理和托叶痕也能提供关键分类信息</li>
+                <li>整株照片有助于判断生长习性（乔木/藤本/附生）</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 方法论说明 -->
+<div class="section methodology-bg">
+  <div class="container">
+    <h3 class="methodology-title">📖 鉴定依据与方法论</h3>
+    <div class="methodology-grid">
+      <div class="method-card">
+        <h4 class="mt-green">🏛️ Berg &amp; Corner (2005) 分类框架</h4>
+        <p>本系统严格遵循 <strong>Berg CC &amp; Corner EJH (2005)</strong> Flora Malesiana Ser.I 17(2) 建立的六亚属分类体系。该框架由荷兰国家植物标本馆和新加坡植物园联合建立，将 Ficus 分为 Pharmacosycea、Urostigma、Ficus、Sycidium、Synoecia、Sycomorus 六个亚属，每个亚属具有独特的组合形态特征。</p>
+      </div>
+      <div class="method-card">
+        <h4 class="mt-blue">🤖 AI 识别流程</h4>
+        <p><strong>GLM-5V</strong> 多模态视觉模型执行 6 步推理：</p>
+        <ol style="padding-left:18px;margin:4px 0;font-size:0.9em;line-height:1.8">
+          <li>整体评估（图像质量、可见器官、环境线索）</li>
+          <li>损伤特征提取（27+维度：形状/位置/边缘/分布等）</li>
+          <li>DTM标准逐一比对（6亚属各打分1-5分）</li>
+          <li>种级候选筛选（缩小到2-3个最可能物种）</li>
+          <li>生态学补充（分布区、传粉蜂、用途）</li>
+        </ol>
+      </div>
+      <div class="method-card">
+        <h4 class="mt-red">⚠️ 准确性与边界</h4>
+        <p><b>能做到的：</b></p>
+        <ul style="padding-left:16px;margin:4px 0;color:var(--text-secondary);font-size:0.86em;line-height:1.7">
+          <li>基于BC'05体系输出唯一亚属分类（可用于科研数据记录）</li>
+          <li>推断到种级候选（到属/种级）</li>
+          <li>提供鉴别诊断、天然混淆组警告和不确定性声明</li>
+          <li>估算生长型和原生分布区</li>
+        </ul>
+        <p style="margin-top:8px"><b>天然混淆限制（即使专家也难区分）：</b></p>
+        <ul style="padding-left:16px;margin:4px 0;color:var(--text-secondary);font-size:0.86em;line-height:1.7">
+          <li>F.benjamina vs F.microcarpa vs F.virens（常见栽培种高度相似）</li>
+          <li>F.benghalensis vs F.religiosa（幼苗期几乎无法区分）</li>
+          <li>仅凭叶片照片难以确定亚属（需隐头果+习性综合判断）</li>
+        </ul>
+      </div>
+      <div class="method-card">
+        <h4 class="mt-gold">📚 核心参考文献</h4>
+        <ol style="padding-left:18px;margin:0;font-size:0.82em;line-height:1.9;color:var(--text-dim)">
+          <li>Berg CC &amp; Corner EJH (2005) Moraceae - Ficus. FM Ser.I 17(2):1–700 — DTM框架奠基</li>
+          <li>Harrison RD (2005) BioScience 55:1053–1064 — 榕树生态学综述</li>
+          <li>Weiblen GD (2002) Plant Syst Evol 2:1–10 — 榕-蜂互作</li>
+          <li>Cook JM &amp; Rasplus JY (2003) Fig wasps... Biol Rev 78:293–344</li>
+          <li>Clement WL et al. (2020) HAL-02979346 — 榕属新分类系统</li>
+          <li>Chantarasuwan B et al. (2015) PMC4479584 — Urostigma 新分类</li>
+          <li>POWO/Kew — Plants of the World Online — 权威物种名录</li>
+          <li>FigWeb (figweb.org) — 在线榕属分类资源</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 亚属详情弹窗 -->
+<div class="type-modal-backdrop" id="typeModalBackdrop">
+  <div class="type-modal" id="typeModal" role="dialog" aria-modal="true">
+    <button class="type-modal-close" id="typeModalClose" aria-label="关闭">✕</button>
+    <div class="type-modal-header" id="typeModalHeader">
+      <span class="type-modal-icon" id="typeModalIcon"></span>
+      <div>
+        <h2 class="type-modal-title" id="typeModalTitle"></h2>
+        <span class="type-modal-dtcode" id="typeModalDtCode"></span>
+      </div>
+    </div>
+    <div class="type-modal-body" id="typeModalBody"></div>
+    <div class="type-modal-footer" id="typeModalFooter">
+      <button class="modal-action-btn" onclick="closeTypeModal()">了解，关闭</button>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p><a href="/">← 返回首页</a></p>
+  <p style="margin-top:12px;">Made with 🌿 · <span id="year"></span></p>
+</footer>
+
+<script src="/js/common.js?v=1"></script>
+<script>
+// ===== LAB LOGIC =====
+let uploadedImageData = null;
+let uploadedFilename = '';
+
+const uploadZone = document.getElementById('uploadZone');
+if(uploadZone){
+  uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('dragover'); });
+  uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('dragover'));
+  uploadZone.addEventListener('drop', e => {
+    e.preventDefault(); uploadZone.classList.remove('dragover');
+    const file = e.dataTransfer.files[0];
+    if(file && file.type.startsWith('image/')) processFile(file);
+  });
+}
+
+function handleUpload(event) {
+  const file = event.target.files[0];
+  if(file) processFile(file);
+}
+
+function compressImage(dataUrl, maxSize, quality) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => {
+      let w = img.width, h = img.height;
+      if(w > maxSize || h > maxSize){ if(w > h){ h = Math.round(h * maxSize / w); w = maxSize; } else{ w = Math.round(w * maxSize / h); h = maxSize; } }
+      const canvas = document.createElement('canvas'); canvas.width = w; canvas.height = h;
+      const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0, w, h);
+      canvas.toBlob(blob => { const reader = new FileReader(); reader.onload = () => resolve(reader.result); reader.readAsDataURL(blob); }, 'image/jpeg', quality);
+    };
+    img.src = dataUrl;
+  });
+}
+const COMPRESS_MAX_DIM = 1280;
+const COMPRESS_QUALITY = 0.82;
+
+async function processFile(file){
+  if(file.size > 10 * 1024 * 1024){ alert('图片不能超过10MB'); return; }
+  uploadedFilename = file.name;
+  const reader = new FileReader();
+  reader.onload = async (e) => {
+    const originalSize = e.target.result.length;
+    const compressedDataUrl = await compressImage(e.target.result, COMPRESS_MAX_DIM, COMPRESS_QUALITY);
+    uploadedImageData = compressedData;
+    const compressedSize = compressedDataUrl.length;
+    const ratio = ((1 - compressedSize / originalSize) * 100).toFixed(0);
+    console.log(`[图片压缩] ${(originalSize/1024).toFixed(0)}KB → ${(compressedSize/1024).toFixed(0)}KB (↓${ratio}%)`);
+    document.getElementById('previewImg').src = compressedDataUrl;
+    document.getElementById('previewImg').classList.remove('hidden');
+    document.getElementById('uploadPlaceholder').classList.add('hidden');
+    document.getElementById('labActions').classList.remove('hidden');
+    document.getElementById('labResult').classList.add('hidden');
+    document.getElementById('labExamples').classList.add('hidden');
+  };
+  reader.readAsDataURL(file);
+}
+
+const STAGES = [
+  { icon:'📥', text:'正在接收图像...' },
+  { icon:'🌿', text:'分析植物形态特征...' },
+  { icon:'🏛️', text:'匹配Berg & Corner分类标准...' },
+  { icon:'🫒', text:'识别隐头果/叶片/树皮特征...' },
+  { icon:'📋', text:'生成物种鉴定报告...' },
+];
+
+let stageTimer = null;
+
+async function analyzeImage(){
+  if(!uploadedImageData){ alert('请先上传图片'); return; }
+  const overlay = document.getElementById('labScanOverlay');
+  const btn = document.getElementById('analyzeBtn');
+  const skelCard = document.getElementById('skeletonCard');
+  const realCard = document.getElementById('realResultCard');
+  const scanPreview = document.getElementById('scanPreview');
+  const previewImg = document.getElementById('previewImg');
+
+  document.getElementById('uploadZone').classList.add('hidden');
+  document.getElementById('labActions').classList.add('hidden');
+  previewImg.classList.add('hidden');
+  overlay.classList.remove('hidden');
+  scanPreview.src = uploadedImageData;
+
+  document.getElementById('labExamples').classList.add('hidden');
+  const labResult = document.getElementById('labResult');
+  labResult.classList.remove('hidden');
+  skelCard.classList.remove('hidden');
+  realCard.classList.add('hidden');
+
+  btn.disabled = true; btn.textContent = '⏳ 分析中...';
+
+  let stageIdx = 0;
+  const stageIcon = document.getElementById('stageIcon');
+  const stageText = document.getElementById('statusText');
+  const stageBar = document.getElementById('stageBar');
+  function showStage(idx){ if(idx >= STAGES.length) idx = STAGES.length - 1; stageIcon.textContent = STAGES[idx].icon; stageText.textContent = STAGES[idx].text; const pct = Math.min(((idx+1)/STAGES.length*100),95); stageBar.style.width = pct+'%'; }
+  showStage(0);
+  stageTimer = setInterval(() => { stageIdx++; if(stageIdx < STAGES.length) showStage(stageIdx); else clearInterval(stageTimer); }, 4000);
+
+  try{
+    const resp = await fetch('/api/identify-ficus', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({ imageData:uploadedImageData, filename:uploadedFilename })
+    });
+    const data = await resp.json();
+
+    clearInterval(stageTimer); stageTimer = null;
+    overlay.classList.add('hidden');
+    document.getElementById('uploadZone').classList.remove('hidden');
+    previewImg.classList.remove('hidden');
+    btn.disabled = false; btn.textContent = '🔍 AI 鉴定';
+    stageBar.style.width = '100%';
+
+    if(!data.success){
+      skelCard.classList.add('hidden'); labResult.classList.add('hidden');
+      document.getElementById('labExamples').classList.remove('hidden');
+      previewImg.classList.add('hidden');
+      document.getElementById('uploadPlaceholder').classList.remove('hidden');
+      alert('分析失败: ' + (data.error || '未知错误'));
+      return;
+    }
+    displayResult(data.result);
+
+  }catch(err){
+    clearInterval(stageTimer); stageTimer = null;
+    overlay.classList.add('hidden');
+    document.getElementById('uploadZone').classList.remove('hidden');
+    previewImg.classList.remove('hidden');
+    btn.disabled = false; btn.textContent = '🔍 AI 鉴定';
+    skelCard.classList.add('hidden'); labResult.classList.add('hidden');
+    document.getElementById('labExamples').classList.remove('hidden');
+    alert('网络错误: ' + err.message);
+  }
+}
+
+function displayResult(r){
+  const labResult = document.getElementById('labResult');
+  const skelCard = document.getElementById('skeletonCard');
+  const realCard = document.getElementById('realResultCard');
+
+  skelCard.classList.add('hidden');
+  realCard.classList.remove('hidden');
+  labResult.classList.remove('hidden');
+  document.getElementById('labExamples').classList.add('hidden');
+
+  // Staggered entrance animation
+  const animTargets = realCard.querySelectorAll('.rb-main,.rb-metrics,.rb-wide,.rb-pair,.rb-ficus-wasp,.rb-note,.rb-warning');
+  animTargets.forEach((el,i) => {
+    if(!el.classList.contains('hidden')){ el.style.opacity='0'; el.style.transform='translateY(12px)';
+      setTimeout(()=>{ el.style.transition='opacity 0.4s ease, transform 0.4s ease'; el.style.opacity='1'; el.style.transform='none'; }, i*60); }
+  });
+
+  const subgenusMap = {
+    pharmacosycea:{icon:'🌲',cn:'药榕亚属',color:'#E07B55'}, urostigma:{icon:'🌳',cn:'榕亚属',color:'#2D9D5C'},
+    ficus:{icon:'🌿',cn:'原始榕亚属',color:'#C75D4A'}, sycidium:{icon:'🔗',cn:'薜荔亚属',color:'#5B8DEF'},
+    synoecia:{icon:'🫒',cn:'聚果榕亚属',color:'#C4922E'}, sycomorus:{icon:'🌍',cn:'非洲榕亚属',color:'#9B59B6'}
+  };
+  const guildMap = { tree:'guild-tree', shrub:'guild-shrub', strangler:'guild-strangler', epiphyte:'guild-epiphyte', liana:'guild-liana' };
+
+  const id = r.identification || {};
+  const sg = subgenusMap[id.subgenus?.toLowerCase()] || subgenusMap.urostigma;
+
+  // Header
+  document.getElementById('resultIcon').textContent = sg.icon;
+  document.getElementById('resultType').innerHTML =
+    `${r.identification?.species_cn || id.species || 'Ficus sp.'}<span class="dt-code-badge">${id.subgenus || ''}</span>`;
+  const conf = r.identification?.confidence || '?';
+  const confNote = r.identification?.confidence_note ? ` (${r.identification.confidence_note})` : '';
+  document.getElementById('resultConfidence').textContent =
+    `置信度 ${conf}%${conf >= 80 ? ' ✅高' : conf >= 60 ? ' ⚠️中' : conf < 50 ? ' ❌低' : ''}${confNote}`;
+
+  // Subgenus badge
+  const sbEl = document.getElementById('subgenusBadge');
+  sbEl.textContent = `${sg.cn} (${id.subgenus || ''})`;
+  sbEl.style.background = `${sg.color}22`; sbEl.style.color = '#fff';
+
+  // Section badge
+  const secEl = document.getElementById('sectionBadge');
+  if(id.section){ secEl.textContent = id.section; secEl.style.display = 'inline-block'; secEl.style.padding = '4px 12px'; secEl.style.borderRadius = '14px'; secEl.style.background = 'rgba(123,109,176,0.15)'; secEl.style.color = '#b09cd4'; }
+
+  // Growth form
+  const gfEl = document.getElementById('growthFormBadge');
+  const eco = r.ecological_context || {};
+  gfEl.textContent = eco.growth_form || 'unknown';
+  gfEl.className = 'guild-badge ' + (guildMap[eco.growth_form] || '');
+
+  // Observed characters
+  const oc = r.observed_characters || {};
+  document.getElementById('organPartTag').textContent =
+    { leaf:'🍃 叶片', syconium:'🫒 隐头果', bark:'🪵 树皮', trunk:'🌳 树干', branch:'🌿 枝条', whole_plant:'🌳 整株', unknown:'❓ 未知' }[oc.plant_part] || '❓ 未知';
+  let ocHtml = '';
+  if(oc.leaf_description) ocHtml += `<p style="font-size:0.88em;line-height:1.7"><b>叶片：</b>${oc.leaf_description}</p>`;
+  if(oc.syconium_description) ocHtml += `<p style="font-size:0.88em;line-height:1.7"><b>隐头果：</b>${oc.syconium_description}</p>`;
+  if(oc.bark_description) ocHtml += `<p style="font-size:0.88em;line-height:1.7"><b>树皮：</b>${oc.bark_description}</p>`;
+  if(oc.habit_description) ocHtml += `<p style="font-size:0.88em;line-height:1.7"><b>习性：</b>${oc.habit_description}</p>`;
+  document.getElementById('observedDesc').innerHTML = ocHtml || '<p style="color:var(--text-dim)">未提供详细描述</p>';
+
+  // Description
+  document.getElementById('resultDesc').innerHTML = r.description || '';
+
+  // Diagnostic features
+  const dfEl = document.getElementById('diagFeatures'); dfEl.innerHTML = '';
+  (r.key_diagnostic_features||[]).forEach(f => { const t=document.createElement('span'); t.className='feature-tag'; t.textContent=f; dfEl.appendChild(t); });
+
+  // Alternative species
+  const asEl = document.getElementById('altSpecies'); asEl.innerHTML = '';
+  (r.identification?.alternative_species||[]).forEach(s => {
+    const d=document.createElement('span'); d.className='insect-tag';
+    d.innerHTML=`<b>${s.name}</b> ${s.cn} (${s.likelihood})`; d.style.background='rgba(196,146,46,0.08)';
+    asEl.appendChild(d);
+  });
+
+  // Confusion warning
+  const cEl = document.getElementById('confusionSection');
+  if(r.confusion_group){ cEl.classList.remove('hidden'); document.getElementById('confusionText').textContent = `⚠️ 天然混淆风险：${r.confusion_group} —— 即使专家也难以纯视觉区分，请结合其他信息综合判断`; }
+  else cEl.classList.add('hidden');
+
+  // Wasp info
+  const wEl = document.getElementById('waspSection');
+  const wi = r.fig_wasp_info;
+  if(wi && wi.is_detected !== false){ wEl.classList.remove('hidden');
+  else wEl.classList.add('hidden');
+  if(wi) document.getElementById('waspDesc').innerHTML =
+    `<b>传粉蜂属：</b>${wi.associated_wasp_genus || '未知'}<br><b>传粉模式：</b>${wi.pollination_mode || '未知'}`;
+
+  // Ecology
+  document.getElementById('nativeRange').innerHTML = eco.native_range || '';
+  document.getElementById('habitatInfo').innerHTML = eco.habitat || '';
+
+  // Differential diagnosis
+  const ddEl = document.getElementById('ddSection');
+  if(r.differential_diagnosis){ ddEl.classList.remove('hidden'); document.getElementById('diffDiag').innerHTML = r.differential_diagnosis; }
+  else ddEl.classList.add('hidden');
+
+  // Limitations
+  const limEl = document.getElementById('limitSection');
+  if(r.limitations){ limEl.classList.remove('hidden'); document.getElementById('limitText').innerHTML = r.limitations; }
+  else limEl.classList.add('hidden');
+
+  if(r.raw_response) document.getElementById('resultDesc').innerHTML = '<pre style="white-space:pre-wrap;font-size:0.85em;color:var(--text-muted)">'+r.raw_response+'</pre>';
+}
+
+function resetLab(){
+  uploadedImageData=null; uploadedFilename='';
+  const previewImg = document.getElementById('previewImg'), up = document.getElementById('uploadPlaceholder'),
+    uz = document.getElementById('uploadZone'), la = document.getElementById('labActions'),
+    lr = document.getElementById('labResult'), ex = document.getElementById('labExamples'),
+    ov = document.getElementById('labScanOverlay'), sk = document.getElementById('skeletonCard'),
+    rc = document.getElementById('realResultCard');
+  previewImg.classList.add('hidden'); up.classList.remove('hidden'); la.classList.add('hidden');
+  lr.classList.add('hidden'); ex.classList.remove('hidden'); ov.classList.add('hidden');
+  sk.classList.add('hidden'); rc.classList.add('hidden');
+}
+
+// Subgenus color map for modal
+const typeColorMap = {
+  pharmacosycea:{bg:'linear-gradient(135deg,#E07B55,#ebb56a)',accent:'#ebb56a',glow:'rgba(224,123,85,0.25)'},
+  urostigma:{bg:'linear-gradient(135deg,#2D9D5C,#3ABF6F)',accent:'#3ABF6F',glow:'rgba(45,157,92,0.25)'},
+  ficus:{bg:'linear-gradient(135deg,#C75D4A,#e88870)',accent:'#e88870',glow:'rgba(199,93,74,0.25)'},
+  sycidium:{bg:'linear-gradient(135deg,#5B8DEF,#8ab4f8)',accent:'#8ab4f8',glow:'rgba(91,141,239,0.25)'},
+  synoecia:{bg:'linear-gradient(135deg,#C4922E,#f0c860)',accent:'#f0c860',glow:'rgba(196,146,46,0.25)'},
+  sycomorus:{bg:'linear-gradient(135deg,#9B59B6,#c39bd3)',accent:'#c39bd3',glow:'rgba(155,89,182,0.25)'}
+};
+
+function openTypeModal(ex){
+  try{
+    const bd = document.getElementById('typeModalBackdrop'), modal = document.getElementById('typeModal');
+    if(!bd || !modal){ console.error('[typeModal] DOM元素未找到'); return; }
+    const colors = typeColorMap[ex.type] || typeColorMap.urostigma;
+    document.getElementById('typeModalIcon').textContent = ex.icon;
+    document.getElementById('typeModalIcon').style.background = colors.glow;
+    document.getElementById('typeModalTitle').textContent = ex.cn;
+    document.getElementById('typeModalTitle').style.color = colors.accent;
+    document.getElementById('typeModalDtCode').textContent = ex.dt_code || '';
+    document.getElementById('typeModalHeader').style.background = colors.bg;
+    document.getElementById('typeModalBody').innerHTML = `
+      <div class="modal-section"><h4>📖 特征描述</h4><p>${ex.desc}</p></div>
+      <div class="modal-section"><h4>🐛 代表物种</h4><div class="modal-tag-row">${ex.insects.map(ins=>`<span class="modal-insect-tag">${ins}</span>`).join('')}</div></div>
+      <div class="modal-section"><h4>🏷️ 分布</h4><p>${ex.distribution || ''}</p></div>
+      <div class="modal-section"><h4>📊 物种数</h4><p>${ex.count || ''}</p></div>
+      ${ex.confusion_note ? `<div class="modal-warning"><h4>⚠️ 混淆提示</h4><p>${ex.confusion_note}</p></div>` : ''}
+    `;
+    document.getElementById('typeModalFooter').innerHTML = `<button class="modal-action-btn" onclick="closeTypeModal()">了解，关闭</button>`;
+    bd.classList.remove('hidden'); requestAnimationFrame(()=>{ bd.classList.add('active'); modal.classList.add('active'); document.body.style.overflow='hidden'; });
+  }catch(err){ console.error('[openTypeModal]', err); alert(`【${ex.cn}】\n\n${ex.desc}\n\n代表物种：${ex.insects.join('、')}`); }
+}
+function closeTypeModal(){
+  const bd = document.getElementById('typeModalBackdrop'), modal = document.getElementById('typeModal');
+  bd.classList.remove('active'); modal.classList.remove('active');
+  setTimeout(()=>{ bd.classList.add('hidden'); document.body.style.overflow=''; }, 300);
+}
+document.getElementById('typeModalBackdrop').addEventListener('click', e => { if(e.target === e.currentTarget) closeTypeModal(); });
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeTypeModal(); });
+document.getElementById('typeModalClose').addEventListener('click', closeTypeModal);
+
+async function loadExamples(){
+  try{
+    const resp = await fetch('/api/ficus-examples'), data = await resp.json();
+    const grid = document.getElementById('exampleGrid'); grid.innerHTML = '';
+    // Subgenus cards
+    data.subgenera.forEach(ex => {
+      const c = document.createElement('div'); c.className = 'example-card'; c.setAttribute('data-type', ex.type);
+      c.innerHTML = `<div class="example-icon">${ex.icon}</div><h4>${ex.cn}</h4><p>${ex.desc.slice(0,35)}...</p>`;
+      c.onclick = (e) => { e.preventDefault(); openTypeModal(ex); };
+      grid.appendChild(c);
+    });
+    // Morphology type cards
+    data.morphology_types.forEach(ex => {
+      const c = document.createElement('div'); c.className = 'example-card'; c.setAttribute('data-type', ex.type);
+      c.innerHTML = `<div class="example-icon">${ex.icon}</div><h4>${ex.cn}</h4><p>${ex.desc.slice(0,30)}...</p>`;
+      c.onclick = (e) => { e.preventDefault(); openTypeModal({
+        icon:ex.icon, cn:ex.cn, dt_code:'', desc:ex.desc + '\n\n变体类型：' + (ex.variants||[]).join(', '), insects:[], count:'', distribution:'', confusion_note:'' }); };
+      grid.appendChild(c);
+    });
+  }catch(e){}
+}
+loadExamples();
+sharedInit();
+</script>
+</body>
+</html>
