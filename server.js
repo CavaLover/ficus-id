@@ -34,7 +34,7 @@ app.use((req, res, next) => {
   const reqLog = log.withContext({ reqId, ip: req.ip });
   reqLog.debug('%s %s', req.method, req.url);
   req._reqLog = reqLog;
-  res.on('finish', () => { reqLog.timer(req).done(res.statusCode); });
+  res.on('finish', () => { reqLog.reqTimer(req).done(res.statusCode); });
   next();
 });
 
