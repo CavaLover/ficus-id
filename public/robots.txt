@@ -1,0 +1,7 @@
+# https://ficus.gqy25.top/robots.txt
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://ficus.gqy25.top/sitemap.xml
