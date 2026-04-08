@@ -474,7 +474,7 @@ function displayResult(r){
   // Wasp info
   const wEl = document.getElementById('waspSection');
   const wi = r.fig_wasp_info;
-  if(wi && wi.is_detected !== false){ wEl.classList.remove('hidden');
+  if(wi && wi.is_detected !== false){ wEl.classList.remove('hidden'); }
   else wEl.classList.add('hidden');
   if(wi) document.getElementById('waspDesc').innerHTML =
     `<b>传粉蜂属：</b>${wi.associated_wasp_genus || '未知'}<br><b>传粉模式：</b>${wi.pollination_mode || '未知'}`;

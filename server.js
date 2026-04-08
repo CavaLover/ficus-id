@@ -21,6 +21,12 @@ const AI_AUTH_TOKEN = process.env.ANTHROPIC_AUTH_TOKEN;
 const log = createLogger('server');
 const logIdentify = createLogger('identify');
 
+function formatBytes(bytes) {
+  if (bytes < 1024) return bytes + 'B';
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + 'KB';
+  return (bytes / (1024 * 1024)).toFixed(1) + 'MB';
+}
+
 // ===== Middleware =====
 app.use(express.json({ limit: '10mb' }));
 app.use(express.static(path.join(BASE_DIR, 'public'), {
