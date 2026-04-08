@@ -7,7 +7,7 @@
 require('dotenv').config();
 const path = require('path');
 const express = require('express');
-const { createLogger, generateReqId } = require('./lib/logger');
+const { createLogger, generateReqId, setupProcessGuards } = require('./lib/logger');
 
 const app = express();
 const PORT = process.env.FICUS_PORT || 3243;
@@ -21,6 +21,9 @@ const AI_AUTH_TOKEN = process.env.ANTHROPIC_AUTH_TOKEN;
 const log = createLogger('server');
 const logIdentify = createLogger('identify');
 
+// 注册进程级错误守护
+setupProcessGuards();
+
 function formatBytes(bytes) {
   if (bytes < 1024) return bytes + 'B';
   if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + 'KB';
@@ -32,6 +35,15 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.static(path.join(BASE_DIR, 'public'), {
   maxAge: '1h', etag: true,
 }));
+
+// 静态文件 404 日志 — 记录缺失的资源请求
+app.use((req, res, next) => {
+  if (req.method === 'GET' && !req.path.startsWith('/api/')) {
+    // 延迟检查：如果后续路由都没匹配，这里会被跳过
+    // 实际的 404 由末尾兜底路由处理
+  }
+  next();
+});
 
 // Request logging + reqId
 app.use((req, res, next) => {
@@ -103,6 +115,7 @@ app.post('/api/identify-ficus', identifyFicusLimiter, async (req, res) => {
       base64Data.length,
       formatBytes(decodedBytes)
     );
+    t.mark('validate');
 
     // ══════════════════════════════════════════════════
     // 调用GLM-5V进行榕属物种鉴定
@@ -474,6 +487,7 @@ app.post('/api/identify-ficus', identifyFicusLimiter, async (req, res) => {
 - 最终鉴定 + 置信度 + 混淆组警告 + 局限性
 
 请严格按照JSON格式输出鉴定报告。`;
+    t.mark('build_prompt');
 
     const idController = new AbortController();
     const idTimeout = setTimeout(() => idController.abort(), 120_000);
@@ -504,6 +518,8 @@ app.post('/api/identify-ficus', identifyFicusLimiter, async (req, res) => {
       clearTimeout(idTimeout);
     }
 
+    t.mark('api_call');
+
     if (!response.ok) {
       const errText = await response.text();
       reqLog.error('GLM-5V API error: status=%s body=%s', response.status, errText.slice(0, 500));
@@ -519,6 +535,7 @@ app.post('/api/identify-ficus', identifyFicusLimiter, async (req, res) => {
     reqLog.info('AI response received (%sms) model=%s content_len=%s',
       t.elapsed.toFixed(0), data.model || AI_MODEL, content.length
     );
+    t.mark('parse_response');
 
     // 从模型返回文本中精确提取 JSON（括号计数法，避免贪婪匹配捕获多余内容）
     function extractJson(text) {
@@ -564,9 +581,10 @@ app.post('/api/identify-ficus', identifyFicusLimiter, async (req, res) => {
 
     // 拉丁名斜体化
     result = italicizeLatinNames(result);
+    t.mark('post_process');
 
     // 记录使用量
-    reqLog.info('done usage=%s', JSON.stringify(data.usage || {}));
+    reqLog.info('done %s usage=%s', t.stop(), JSON.stringify(data.usage || {}));
 
     res.json({
       success: true,
@@ -672,6 +690,28 @@ app.get('/api/ficus-examples', (req, res) => {
 const { generateSitemap } = require('./lib/sitemap');
 app.get('/sitemap.xml', (req, res) => {
   res.type('application/xml').send(generateSitemap());
+});
+
+// ===== 404 兜底 + 静态资源日志 =====
+app.use((req, res) => {
+  const acceptHtml = req.headers.accept && req.headers.accept.includes('text/html');
+  if (acceptHtml) {
+    // HTML 请求 — 返回友好 404 页面
+    res.status(404).type('html').send(
+      '<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><title>404 — 页面未找到</title>'
+      + '<style>body{display:flex;align-items:center;justify-content:center;height:100vh;margin:0;'
+      + 'background:#0a0f0a;color:#c4d4b8;font-family:system-ui;text-align:center}'
+      + 'h1{font-size:6rem;margin:0}p{color:#7a9a6a}</style></head>'
+      + '<body><div><h1>404</h1><p>页面未找到</p>'
+      + '<a href="/" style="color:#4a9a3a">← 返回首页</a></div></body></html>'
+    );
+  } else {
+    // API/其他请求 — 返回 JSON
+    res.status(404).json({ error: `Not Found: ${req.method} ${req.path}` });
+  }
+  // 记录 404 日志
+  log.warn('404 %s %s (accept=%s)', req.method, req.path,
+    req.headers.accept ? req.headers.accept.split(',')[0] : '-');
 });
 
 // ===== Server Startup =====

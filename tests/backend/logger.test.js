@@ -4,7 +4,7 @@
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { createLogger, generateReqId } from '../../lib/logger.js';
+import { createLogger, generateReqId, setupProcessGuards } from '../../lib/logger.js';
 
 describe('Logger Module', () => {
   describe('generateReqId', () => {
@@ -179,6 +179,113 @@ describe('Logger Module', () => {
       const rt = log.reqTimer({ method: 'GET', path: '/api/test' });
       expect(() => rt.done(200)).not.toThrow();
       expect(() => rt.done(200, 'extra')).not.toThrow();
+    });
+
+    it('timer.stop() returns total ms as number', () => {
+      const log = createLogger('timer-ret');
+      const t = log.timer('op');
+      const result = t.stop();
+      expect(typeof result).toBe('number');
+      expect(result).toBeGreaterThanOrEqual(0);
+    });
+
+    it('timer.stop() with marks logs step breakdown to console', () => {
+      const log = createLogger('timer-steps');
+      const spy = vi.spyOn(console, 'log').mockImplementation(() => {});
+      const t = log.timer('multi');
+      t.mark('a');
+      t.mark('b');
+      t.stop();
+      // stop() internally logs via debug — should contain step names
+      const output = String(spy.mock.calls[spy.mock.calls.length - 1][0]);
+      expect(output).toContain('a=');
+      expect(output).toContain('b=');
+      spy.mockRestore();
+    });
+  });
+
+  describe('JSON mode', () => {
+    let originalJson;
+
+    beforeEach(() => {
+      originalJson = process.env.LOG_JSON;
+      process.env.LOG_JSON = 'true';
+    });
+
+    afterEach(() => {
+      process.env.LOG_JSON = originalJson;
+    });
+
+    it('should output valid JSON when LOG_JSON=true', () => {
+      const log = createLogger('json-mod');
+      const spy = vi.spyOn(console, 'log').mockImplementation(() => {});
+      log.info('test json msg');
+      const raw = spy.mock.calls[0][0];
+      const parsed = JSON.parse(raw);
+      expect(parsed).toHaveProperty('ts');
+      expect(parsed).toHaveProperty('level', 'info');
+      expect(parsed).toHaveProperty('module', 'json-mod');
+      expect(parsed.msg).toContain('test json msg');
+      spy.mockRestore();
+    });
+
+    it('JSON error output should include call site (at field)', () => {
+      const log = createLogger('json-err');
+      const spy = vi.spyOn(console, 'log').mockImplementation(() => {});
+      log.error('err msg');
+      const raw = spy.mock.calls[0][0];
+      const parsed = JSON.parse(raw);
+      expect(parsed.level).toBe('error');
+      expect(parsed).toHaveProperty('at');
+      spy.mockRestore();
+    });
+
+    it('JSON context output should include reqId', () => {
+      const log = createLogger('json-ctx');
+      const spy = vi.spyOn(console, 'log').mockImplementation(() => {});
+      const ctxLog = log.withContext({ reqId: 'ctx99', ip: '1.2.3.4' });
+      ctxLog.info('ctx msg');
+      const raw = spy.mock.calls[0][0];
+      const parsed = JSON.parse(raw);
+      expect(parsed.reqId).toBe('ctx99');
+      expect(parsed.ip).toBe('1.2.3.4');
+      spy.mockRestore();
+    });
+  });
+
+  describe('error call site tracking', () => {
+    it('error level should include file:line in output', () => {
+      const log = createLogger('site-test');
+      const spy = vi.spyOn(console, 'log').mockImplementation(() => {});
+      log.error('site check');
+      // 找到包含我们模块名的调用（可能是多个调用中的某一个）
+      const call = spy.mock.calls.find(c => String(c[0]).includes('[site-test]'));
+      expect(call).toBeDefined();
+      const output = String(call[0]);
+      expect(output).toMatch(/\(.+?\:\d+\)/);
+      spy.mockRestore();
+    });
+
+    it('non-error levels should NOT include call site', () => {
+      const log = createLogger('nosite-test');
+      const spy = vi.spyOn(console, 'log').mockImplementation(() => {});
+      log.info('no site');
+      const output = String(spy.mock.calls[0][0]);
+      // info 级别不应有 (filename:line) 格式的调用位置
+      expect(output).not.toMatch(/\([a-zA-Z_]+\.\w+:\d+\)/);
+      spy.mockRestore();
+    });
+  });
+
+  describe('setupProcessGuards', () => {
+    it('should be a function that does not throw', () => {
+      expect(typeof setupProcessGuards).toBe('function');
+      expect(() => setupProcessGuards()).not.toThrow();
+    });
+
+    it('calling twice should be idempotent', () => {
+      setupProcessGuards();
+      expect(() => setupProcessGuards()).not.toThrow();
     });
   });
 });
