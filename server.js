@@ -66,12 +66,42 @@ app.post('/api/identify-ficus', identifyFicusLimiter, async (req, res) => {
       return res.status(400).json({ error: '缺少图片数据' });
     }
 
-    // 提取base64数据
-    const base64Data = imageData.replace(/^data:image\/\w+;base64,/, '');
-    reqLog.debug('params: {filename:"%s"} base64_len=%s chars (~%s)',
+    // 从 Data URL 提取 MIME 类型和 base64 数据
+    const dataUrlMatch = imageData.match(/^data:(image\/\w+);base64,(.+)$/s);
+    if (!dataUrlMatch) {
+      reqLog.warn('imageData 格式无效：不是合法的 Data URL');
+      return res.status(400).json({ error: '图片数据格式无效，需要 base64 Data URL' });
+    }
+
+    const mediaType = dataUrlMatch[1];       // 如 image/jpeg, image/png
+    let base64Data = dataUrlMatch[2];
+
+    // 清理 base64 中的空白字符（某些编码器每76字符插入换行）
+    base64Data = base64Data.replace(/\s/g, '');
+
+    // 校验 base64 合法性（仅允许 A-Za-z0-9+/=）
+    if (!/^[A-Za-z0-9+/]+=*$/.test(base64Data)) {
+      reqLog.warn('base64 数据包含非法字符，len=%s', base64Data.length);
+      return res.status(400).json({ error: '图片数据格式错误' });
+    }
+
+    // 校验解码后体积（base64 长度 * 0.75 ≈ 字节数），最小 1KB 防止空串/极短数据
+    const decodedBytes = Math.floor(base64Data.length * 0.75);
+    const MAX_IMAGE_BYTES = 10 * 1024 * 1024; // 10MB 上限
+    if (decodedBytes < 1024) {
+      reqLog.warn('图片数据过小 (~%s)，可能无效', formatBytes(decodedBytes));
+      return res.status(400).json({ error: '图片数据过小或损坏' });
+    }
+    if (decodedBytes > MAX_IMAGE_BYTES) {
+      reqLog.warn('图片数据过大 (%s > %s)，拒绝处理', formatBytes(decodedBytes), formatBytes(MAX_IMAGE_BYTES));
+      return res.status(413).json({ error: `图片过大（${formatBytes(decodedBytes)}），请压缩后重试` });
+    }
+
+    reqLog.debug('params: {filename:"%s"} media=%s base64_len=%s chars (~%s)',
       filename || 'unnamed',
+      mediaType,
       base64Data.length,
-      formatBytes(base64Data.length * 0.75)
+      formatBytes(decodedBytes)
     );
 
     // ══════════════════════════════════════════════════
@@ -463,7 +493,7 @@ app.post('/api/identify-ficus', identifyFicusLimiter, async (req, res) => {
           messages: [
             { role: 'user', content: [
               { type: 'text', text: userPrompt },
-              { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: base64Data } }
+              { type: 'image', source: { type: 'base64', media_type: mediaType, data: base64Data } }
             ]}
           ],
           max_tokens: 16384,
@@ -490,12 +520,34 @@ app.post('/api/identify-ficus', identifyFicusLimiter, async (req, res) => {
       t.elapsed.toFixed(0), data.model || AI_MODEL, content.length
     );
 
-    // 尝试从返回中提取JSON
+    // 从模型返回文本中精确提取 JSON（括号计数法，避免贪婪匹配捕获多余内容）
+    function extractJson(text) {
+      const startIdx = text.indexOf('{');
+      if (startIdx === -1) return null;
+
+      let depth = 0;
+      let inString = false;
+      let escape = false;
+      for (let i = startIdx; i < text.length; i++) {
+        const ch = text[i];
+        if (escape) { escape = false; continue; }
+        if (ch === '\\') { escape = true; continue; }
+        if (ch === '"') { inString = !inString; continue; }
+        if (inString) continue;
+        if (ch === '{') depth++;
+        else if (ch === '}') {
+          depth--;
+          if (depth === 0) return text.substring(startIdx, i + 1);
+        }
+      }
+      return null;
+    }
+
     let result;
-    const jsonMatch = content.match(/\{[\s\S]*\}/);
-    if (jsonMatch) {
+    const jsonStr = extractJson(content);
+    if (jsonStr) {
       try {
-        result = JSON.parse(jsonMatch[0]);
+        result = JSON.parse(jsonStr);
         reqLog.debug('JSON parsed ok, top_keys=%s',
           Object.keys(result).slice(0, 10).join(',')
         );
